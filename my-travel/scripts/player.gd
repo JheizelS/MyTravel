@@ -1,31 +1,34 @@
 extends VehicleBody3D
 
-func _ready():
-	print("=== CAR STARTUP ===")
-	print("Mass: ", mass)
-	
-	# Check wheels
-	var wheel_count = 0
-	var traction_wheels = 0
-	for child in get_children():
-		if child is VehicleWheel3D:
-			wheel_count += 1
-			print("Wheel: ", child.name)
-			print("  - Traction: ", child.use_as_traction)
-			print("  - Steering: ", child.use_as_steering)
-			print("  - Radius: ", child.wheel_radius)
-			if child.use_as_traction:
-				traction_wheels += 1
-	
-	print("Total wheels: ", wheel_count)
-	print("Traction wheels: ", traction_wheels)
-	if traction_wheels == 0:
-		print("❌ ERROR: No traction wheels! Car won't move.")
-	
-	# Lift car slightly
-	position.y = 0.5
+const MAX_STEER = 0.8
+const ENGINE_POWER = 300
 
-func _process(delta):
-	# Test with constant force
-	engine_force = 300
-	print("Velocity: ", linear_velocity.length())
+@onready var camera_pivot: Node3D = $CameraPivot
+@onready var camera_3d: Camera3D = $CameraPivot/Camera3D
+@onready var reverse_camera: Camera3D = $CameraPivot/ReverseCamera
+
+var look_at
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	look_at = global_position
+	
+func _physics_process(delta):
+	steering = move_toward(steering, Input.get_axis("steer_right","steer_left") * MAX_STEER, delta * 2.5)
+	engine_force = Input.get_axis("steer_back","steer_forward") * ENGINE_POWER
+	camera_pivot.global_position = camera_pivot.global_position.lerp(global_position, delta * 20.0)
+	camera_pivot.transform = camera_pivot.transform.interpolate_with(transform, delta * 5.0)
+	look_at = look_at.lerp(global_position + linear_velocity, delta * 5.0)
+	camera_3d.look_at(look_at)
+	reverse_camera.look_at(look_at)
+	_check_camera_switch()
+	
+func _check_camera_switch():
+	if linear_velocity.length() < 0.5:
+		return
+	
+	
+	if linear_velocity.dot(transform.basis.z) > 0:
+		camera_3d.current = true
+	else:
+		reverse_camera.current = true

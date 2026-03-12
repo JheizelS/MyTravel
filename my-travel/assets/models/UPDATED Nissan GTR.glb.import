@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://hie01evk7u12"
-path="res://.godot/imported/Chevrolet Camaro.glb-80c5b3f7063ad556ce1bd677c2d0ec5a.scn"
+uid="uid://dkhhe8xv2igq8"
+path="res://.godot/imported/UPDATED Nissan GTR.glb-134b0f2dd7b8f4c141cb20fd8d7909a0.scn"
 
 [deps]
 
-source_file="res://assets/models/Chevrolet Camaro.glb"
-dest_files=["res://.godot/imported/Chevrolet Camaro.glb-80c5b3f7063ad556ce1bd677c2d0ec5a.scn"]
+source_file="res://assets/models/UPDATED Nissan GTR.glb"
+dest_files=["res://.godot/imported/UPDATED Nissan GTR.glb-134b0f2dd7b8f4c141cb20fd8d7909a0.scn"]
 
 [params]
 
