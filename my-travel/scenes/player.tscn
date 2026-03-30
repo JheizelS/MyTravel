@@ -21,12 +21,16 @@ script = ExtResource("1_tuyoq")
 transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 0, 2)
 top_level = true
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1815684278]
-transform = Transform3D(-1, -1.8176223e-08, 8.551238e-08, -4.440892e-15, 0.9781477, 0.20791171, -8.742278e-08, 0.20791171, -0.9781477, 0, 2.956096, -7.1823997)
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=2100033369]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 2.9558268, -6.6560755)
+collision_mask = 0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1815684278]
+transform = Transform3D(-1, -1.8176223e-08, 8.551238e-08, -7.619401e-09, 0.99254614, 0.121869355, -8.709011e-08, 0.121869355, -0.99254614, 0, 0, 0)
 current = true
 
-[node name="ReverseCamera" type="Camera3D" parent="CameraPivot" unique_id=1743157631]
-transform = Transform3D(1, 0, 0, 0, 0.9955587, 0.094143055, 0, -0.09414304, 0.9955587, 0, 1.5663689, 3.5768812)
+[node name="ReverseCamera" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1743157631]
+transform = Transform3D(1, 2.1564908e-15, -6.828287e-15, -8.881784e-16, 0.98356515, 0.18055348, 7.1054274e-15, -0.18055348, 0.98356515, 0, 0.060668707, 10.364002)
 
 [node name="front_right" parent="." unique_id=81804233 instance=ExtResource("1_qlg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1286938, -0.37410903, 1.9439007)
