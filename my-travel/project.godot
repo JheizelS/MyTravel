@@ -14,6 +14,10 @@ config/name="MyTravel"
 run/main_scene="uid://dbutotff6qm32"
 config/features=PackedStringArray("4.6", "Mobile")
 
+[autoload]
+
+MouseSettings="*uid://byvsc3ynvx80s"
+
 [input]
 
 steer_right={

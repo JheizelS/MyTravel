@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://dbutotff6qm32"]
 
 [ext_resource type="PackedScene" uid="uid://btft6ul4h33n1" path="res://scenes/player.tscn" id="1_i0vkk"]
+[ext_resource type="PackedScene" uid="uid://cffwggvli6mpu" path="res://assets/road/road-straight.glb" id="2_njdbb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0vkk"]
+shadow_to_opacity = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ppoe"]
+material = SubResource("StandardMaterial3D_i0vkk")
 size = Vector3(1000, 1, 5000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0vkk"]
@@ -134,8 +139,8 @@ shader_parameter/exposure = 1.0
 shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
 shader_parameter/cloud_texture = SubResource("NoiseTexture2D_5ydnt")
 shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_hvfur")
-shader_parameter/cloud_direction = Vector2(-1, 1)
-shader_parameter/cloud_direction2 = Vector2(1, -1)
+shader_parameter/cloud_direction = Vector2(5, 5)
+shader_parameter/cloud_direction2 = Vector2(4, -1)
 shader_parameter/cloud_scale = Vector2(0.05, 0.05)
 shader_parameter/cloud_distance = 0.035
 
@@ -145,17 +150,18 @@ sky_material = SubResource("ShaderMaterial_2cgvf")
 [sub_resource type="Environment" id="Environment_i0vkk"]
 background_mode = 2
 sky = SubResource("Sky_mkfqs")
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 tonemap_exposure = 2.15
 tonemap_white = 1.5
 
 [node name="Road" type="Node3D" unique_id=538385699]
 
-[node name="road_surface" type="MeshInstance3D" parent="." unique_id=1873776774]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1657822654]
+
+[node name="road_surface" type="MeshInstance3D" parent="StaticBody3D" unique_id=1873776774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2497559)
 mesh = SubResource("BoxMesh_5ppoe")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1657822654]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1946472315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2497559)
@@ -164,5 +170,11 @@ shape = SubResource("BoxShape3D_i0vkk")
 [node name="Player" parent="." unique_id=1174374341 instance=ExtResource("1_i0vkk")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 42.50111, 1.4200361, 3.756743)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=377452095]
+transform = Transform3D(1.775652e-08, 0.99766535, 0.068293825, 0.92970586, -0.025152847, 0.36744326, 0.3683031, 0.06349316, -0.9275351, 0.08952594, 1.6143429, -4.0474014)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1954072314]
 environment = SubResource("Environment_i0vkk")
+
+[node name="road-straight2" parent="." unique_id=1391184530 instance=ExtResource("2_njdbb")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 38.952744, -0.6323719, -3.2559602)
