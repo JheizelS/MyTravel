@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dbutotff6qm32"]
 
 [ext_resource type="PackedScene" uid="uid://btft6ul4h33n1" path="res://scenes/player.tscn" id="1_i0vkk"]
-[ext_resource type="PackedScene" uid="uid://cffwggvli6mpu" path="res://assets/road/road-straight.glb" id="2_njdbb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0vkk"]
 shadow_to_opacity = true
@@ -160,7 +159,7 @@ tonemap_white = 1.5
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1657822654]
 
 [node name="road_surface" type="MeshInstance3D" parent="StaticBody3D" unique_id=1873776774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2497559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0667572, -0.05708289, -2.246078)
 mesh = SubResource("BoxMesh_5ppoe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1946472315]
@@ -168,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2497559)
 shape = SubResource("BoxShape3D_i0vkk")
 
 [node name="Player" parent="." unique_id=1174374341 instance=ExtResource("1_i0vkk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 42.50111, 1.4200361, 3.756743)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 42.50111, 0.42559195, 3.756743)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=377452095]
 transform = Transform3D(1.775652e-08, 0.99766535, 0.068293825, 0.92970586, -0.025152847, 0.36744326, 0.3683031, 0.06349316, -0.9275351, 0.08952594, 1.6143429, -4.0474014)
@@ -176,5 +175,5 @@ transform = Transform3D(1.775652e-08, 0.99766535, 0.068293825, 0.92970586, -0.02
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1954072314]
 environment = SubResource("Environment_i0vkk")
 
-[node name="road-straight2" parent="." unique_id=1391184530 instance=ExtResource("2_njdbb")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 38.952744, -0.6323719, -3.2559602)
+[node name="GridMap" type="GridMap" parent="." unique_id=500654591]
+cell_size = Vector3(10, 10, 10)

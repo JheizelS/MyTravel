@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://btft6ul4h33n1"]
 
-[ext_resource type="PackedScene" uid="uid://ci21b36sl33o4" path="res://assets/models/front_right.tscn" id="1_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://ci21b36sl33o4" path="res://assets/models/car/front_right.tscn" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://cffwne2or10tx" path="res://scripts/player.gd" id="1_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://dt0uxmhyc0yex" path="res://assets/models/back_left.tscn" id="2_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://trpg1fd1qhjp" path="res://assets/models/back_right.tscn" id="3_fjrip"]
-[ext_resource type="PackedScene" uid="uid://cj0m5h2hcxlhh" path="res://assets/models/front_left.tscn" id="4_smehm"]
-[ext_resource type="PackedScene" uid="uid://c0wjgy5exr5lm" path="res://assets/models/car_body.tscn" id="5_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://dt0uxmhyc0yex" path="res://assets/models/car/back_left.tscn" id="2_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://trpg1fd1qhjp" path="res://assets/models/car/back_right.tscn" id="3_fjrip"]
+[ext_resource type="PackedScene" uid="uid://cj0m5h2hcxlhh" path="res://assets/models/car/front_left.tscn" id="4_smehm"]
+[ext_resource type="PackedScene" uid="uid://c0wjgy5exr5lm" path="res://assets/models/car/car_body.tscn" id="5_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://dgbe06mx6olpk" path="res://scenes/speedometer.tscn" id="7_fjrip"]
 
 [sub_resource type="GDScript" id="GDScript_fjrip"]
@@ -44,11 +44,11 @@ collision_mask = 0
 script = SubResource("GDScript_fjrip")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1815684278]
-transform = Transform3D(-1, -1.8176223e-08, 8.551238e-08, -7.619401e-09, 0.99254614, 0.121869355, -8.709011e-08, 0.121869355, -0.99254614, 0, 0, 0)
+transform = Transform3D(-1, -1.8176223e-08, 8.5512376e-08, -1.7301645e-09, 0.9820708, 0.18851271, -8.740566e-08, 0.18851271, -0.9820708, 0, 0, -1.379477)
 current = true
 
 [node name="ReverseCamera" type="Camera3D" parent="CameraPivot" unique_id=1743157631]
-transform = Transform3D(1, 0, 0, 0, 0.995562, 0.09410832, 0, -0.09410832, 0.995562, 0, 2.1440413, 3.3111007)
+transform = Transform3D(1, 0, 0, 0, 0.9955621, 0.09410832, 0, -0.09410832, 0.9955621, 0, 0.5667605, -4.8600154)
 
 [node name="front_right" parent="." unique_id=81804233 instance=ExtResource("1_qlg0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1286938, -0.37410903, 1.9439007)

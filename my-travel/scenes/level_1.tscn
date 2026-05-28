@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://id412qmamnc"]
+
+[ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="1_014kd"]
+[ext_resource type="PackedScene" uid="uid://ea1rrodiuno6" path="res://assets/models/road/road_curve.tscn" id="2_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://btft6ul4h33n1" path="res://scenes/player.tscn" id="4_fcfvj"]
+
+[sub_resource type="Shader" id="Shader_i0vkk"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.6.1.stable's ProceduralSkyMaterial.
+
+shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float inv_sky_curve : hint_range(1, 100) = 4.0;
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float inv_ground_curve : hint_range(1, 100) = 30.0;
+uniform float sun_angle_max = 0.877;
+uniform float inv_sun_curve : hint_range(1, 100) = 22.78;
+uniform float exposure : hint_range(0, 128) = 1.0;
+
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+uniform sampler2D cloud_texture;
+uniform sampler2D cloud_texture2;
+uniform vec2 cloud_direction;
+uniform vec2 cloud_direction2;
+uniform vec2 cloud_scale;
+uniform float cloud_distance;
+
+void sky() {
+	float v_angle = clamp(EYEDIR.y, -1.0, 1.0);
+	vec3 sky = mix(sky_top_color.rgb, sky_horizon_color.rgb, clamp(pow(1.0 - v_angle, inv_sky_curve), 0.0, 1.0));
+
+	if (LIGHT0_ENABLED) {
+		float sun_angle = dot(LIGHT0_DIRECTION, EYEDIR);
+		float sun_size = cos(LIGHT0_SIZE);
+		if (sun_angle > sun_size) {
+			sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+		} else if (sun_angle > sun_angle_max) {
+			float c2 = (sun_size - sun_angle) / (sun_size - sun_angle_max);
+			sky = mix(sky, LIGHT0_COLOR * LIGHT0_ENERGY, clamp(pow(1.0 - c2, inv_sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT1_ENABLED) {
+		float sun_angle = dot(LIGHT1_DIRECTION, EYEDIR);
+		float sun_size = cos(LIGHT1_SIZE);
+		if (sun_angle > sun_size) {
+			sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+		} else if (sun_angle > sun_angle_max) {
+			float c2 = (sun_size - sun_angle) / (sun_size - sun_angle_max);
+			sky = mix(sky, LIGHT1_COLOR * LIGHT1_ENERGY, clamp(pow(1.0 - c2, inv_sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT2_ENABLED) {
+		float sun_angle = dot(LIGHT2_DIRECTION, EYEDIR);
+		float sun_size = cos(LIGHT2_SIZE);
+		if (sun_angle > sun_size) {
+			sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+		} else if (sun_angle > sun_angle_max) {
+			float c2 = (sun_size - sun_angle) / (sun_size - sun_angle_max);
+			sky = mix(sky, LIGHT2_COLOR * LIGHT2_ENERGY, clamp(pow(1.0 - c2, inv_sun_curve), 0.0, 1.0));
+		}
+	}
+
+	if (LIGHT3_ENABLED) {
+		float sun_angle = dot(LIGHT3_DIRECTION, EYEDIR);
+		float sun_size = cos(LIGHT3_SIZE);
+		if (sun_angle > sun_size) {
+			sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+		} else if (sun_angle > sun_angle_max) {
+			float c2 = (sun_size - sun_angle) / (sun_size - sun_angle_max);
+			sky = mix(sky, LIGHT3_COLOR * LIGHT3_ENERGY, clamp(pow(1.0 - c2, inv_sun_curve), 0.0, 1.0));
+		}
+	}
+
+	
+	
+	vec3 ground = mix(ground_bottom_color.rgb, ground_horizon_color.rgb, clamp(pow(1.0 + v_angle, inv_ground_curve), 0.0, 1.0));
+	
+	vec2 sky_uv = EYEDIR.xz / EYEDIR.y;
+	vec3 clouds = texture(cloud_texture, sky_uv + cloud_scale * TIME * cloud_direction * 0.001).rgb - texture(cloud_texture2, sky_uv * TIME * cloud_direction2 * 0.0008).rgb;
+	sky += clouds;
+	COLOR = mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_rus8k"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5xbjy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ydnt"]
+height = 1024
+noise = SubResource("FastNoiseLite_5xbjy")
+color_ramp = SubResource("Gradient_rus8k")
+seamless = true
+in_3d_space = true
+as_normal_map = true
+normalize = false
+seamless_blend_skirt = 0.3
+
+[sub_resource type="Gradient" id="Gradient_4nkto"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fcfvj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvfur"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_fcfvj")
+color_ramp = SubResource("Gradient_4nkto")
+seamless = true
+in_3d_space = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pa8r4"]
+shader = SubResource("Shader_i0vkk")
+shader_parameter/sky_top_color = Color(8.6635355e-06, 0.6557145, 0.9760981, 1)
+shader_parameter/sky_horizon_color = Color(0.44256303, 0.5665147, 0.55400085, 1)
+shader_parameter/inv_sky_curve = 1.0
+shader_parameter/ground_bottom_color = Color(0.41319364, 0.88070756, 0.976124, 1)
+shader_parameter/ground_horizon_color = Color(0.42940181, 0.7116597, 0.7160704, 1)
+shader_parameter/inv_ground_curve = 1.0
+shader_parameter/sun_angle_max = 0.8660254
+shader_parameter/inv_sun_curve = 22.782017
+shader_parameter/exposure = 1.0
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/cloud_texture = SubResource("NoiseTexture2D_5ydnt")
+shader_parameter/cloud_texture2 = SubResource("NoiseTexture2D_hvfur")
+shader_parameter/cloud_direction = Vector2(5, 5)
+shader_parameter/cloud_direction2 = Vector2(4, -1)
+shader_parameter/cloud_scale = Vector2(0.05, 0.05)
+shader_parameter/cloud_distance = 0.035
+
+[sub_resource type="Sky" id="Sky_mkfqs"]
+sky_material = SubResource("ShaderMaterial_pa8r4")
+
+[sub_resource type="Environment" id="Environment_15mv3"]
+background_mode = 2
+sky = SubResource("Sky_mkfqs")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+tonemap_exposure = 2.15
+tonemap_white = 1.5
+
+[node name="Level1" type="Node3D" unique_id=417963903]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=282004870]
+transform = Transform3D(0.5758662, -0.22587024, 0.7857231, -0.5573939, 0.5946009, 0.57944953, -0.59807205, -0.7716428, 0.21651186, 2.4002104, 6.9608927, 9.402702)
+
+[node name="Player" parent="." unique_id=1174374341 instance=ExtResource("4_fcfvj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2618494, 1.1303967, -5.296997)
+
+[node name="road" type="Node3D" parent="." unique_id=479892134]
+
+[node name="road-straight2" parent="road" unique_id=247150468 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45, 0, 0)
+
+[node name="road-straight3" parent="road" unique_id=45701531 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15, 0, 0)
+
+[node name="road-straight4" parent="road" unique_id=1368296834 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15, 0, 0)
+
+[node name="road-straight5" parent="road" unique_id=1884478457 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -30, 0, 0)
+
+[node name="road-straight6" parent="road" unique_id=549180308 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 30, 0, 0)
+
+[node name="road-straight7" parent="road" unique_id=667144204 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 30)
+
+[node name="road-curve2" parent="road" unique_id=1366952744 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 75, 0, 15)
+
+[node name="road-curve3" parent="road" unique_id=1503736745 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-14.999999, 5.7320536e-14, 1.3113414e-06, -5.7320536e-14, 14.999999, -1.3113414e-06, -1.3113414e-06, -1.3113414e-06, -14.999999, 60, 0, 15)
+
+[node name="road-curve4" parent="road" unique_id=1150793975 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 119.84599, 0, 60)
+
+[node name="road-straight8" parent="road" unique_id=894377783 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, 105, 0, 75)
+
+[node name="road-straight9" parent="road" unique_id=502992317 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567065e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567065e-07, 14.999999, -6.556707e-07, -6.5567076e-07, 105, 0, 90)
+
+[node name="road-curve5" parent="road" unique_id=922574451 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, 90, 0, 120)
+
+[node name="road-curve6" parent="road" unique_id=1712130910 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-6.5567076e-07, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -14.999999, -6.5567076e-07, -6.556707e-07, 90, 0, 105)
+
+[node name="road-straight10" parent="road" unique_id=181357165 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, 60, 0, 150)
+
+[node name="road-straight11" parent="road" unique_id=1436689383 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, 60, 0, 165)
+
+[node name="road-curve7" parent="road" unique_id=558571712 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-14.999999, 5.7320536e-14, 1.3113414e-06, -5.7320536e-14, 14.999999, -1.3113414e-06, -1.3113414e-06, -1.3113414e-06, -14.999999, 60, 0, 165)
+
+[node name="road-curve8" parent="road" unique_id=1503031485 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-6.5567076e-07, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -14.999999, -6.5567076e-07, -6.556707e-07, -45, 0, -15)
+
+[node name="road-straight12" parent="road" unique_id=857740069 instance=ExtResource("1_014kd")]
+
+[node name="road-curve9" parent="road" unique_id=673276478 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 120, 0, 210)
+
+[node name="road-curve10" parent="road" unique_id=568553972 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, 90, 0, 240)
+
+[node name="road-straight13" parent="road" unique_id=267983566 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 90, 0, 240)
+
+[node name="road-straight14" parent="road" unique_id=1220344544 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 75, 0, 240)
+
+[node name="road-straight15" parent="road" unique_id=1718037055 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 60, 0, 240)
+
+[node name="road-straight16" parent="road" unique_id=1840911040 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45, 0, 240)
+
+[node name="road-straight17" parent="road" unique_id=1957181373 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 30, 0, 240)
+
+[node name="road-straight18" parent="road" unique_id=293945664 instance=ExtResource("1_014kd")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15, 0, 240)
+
+[node name="road-curve11" parent="road" unique_id=1258301383 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-14.999999, -5.7320556e-14, -1.3113415e-06, 5.7320556e-14, 14.999999, -1.3113415e-06, 1.3113415e-06, -1.3113415e-06, -14.999999, -30, 0, 210)
+
+[node name="road-straight19" parent="road" unique_id=1604566389 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -30, 0, 210)
+
+[node name="road-curve12" parent="road" unique_id=282007431 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15, 0, 195)
+
+[node name="road-curve13" parent="road" unique_id=1427721651 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(-14.999999, -5.7320556e-14, -1.3113415e-06, 5.7320556e-14, 14.999999, -1.3113415e-06, 1.3113415e-06, -1.3113415e-06, -14.999999, -75, 0, 150)
+
+[node name="road-straight20" parent="road" unique_id=1245401605 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 150)
+
+[node name="road-straight21" parent="road" unique_id=1886310700 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 135)
+
+[node name="road-straight22" parent="road" unique_id=167640955 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 120)
+
+[node name="road-straight23" parent="road" unique_id=185760187 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 105)
+
+[node name="road-straight24" parent="road" unique_id=1127409553 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 90)
+
+[node name="road-straight25" parent="road" unique_id=1122709518 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 75)
+
+[node name="road-straight26" parent="road" unique_id=351105989 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 60)
+
+[node name="road-straight27" parent="road" unique_id=432757298 instance=ExtResource("1_014kd")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 45)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=880408311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -0.5, 122.5)
+use_collision = true
+size = Vector3(270, 1, 375)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=835317099]
+environment = SubResource("Environment_15mv3")

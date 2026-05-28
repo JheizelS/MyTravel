@@ -47,7 +47,10 @@ func _physics_process(delta):
 	)
 	# Acceleration/braking
 	engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER
-
+	
+	var heading_diff = angle_difference(global_rotation.y, camera_pivot.global_rotation.y)
+	camera_yaw = clamp(heading_diff, deg_to_rad(-MAX_PAN_ANGLE), deg_to_rad(MAX_PAN_ANGLE))
+	
 	# Snap pivot position to car each frame
 	camera_pivot.global_position = global_position
 	# Smoothly rotate pivot to match car heading + any pan offset

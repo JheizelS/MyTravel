@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MyTravel"
-run/main_scene="uid://dbutotff6qm32"
+run/main_scene="uid://id412qmamnc"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
