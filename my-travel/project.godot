@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="MyTravel"
-run/main_scene="uid://id412qmamnc"
+run/main_scene="uid://bd2fhfp4b1cpx"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
 
-MouseSettings="*uid://byvsc3ynvx80s"
+MouseSettings="*uid://cj4hs5x4ep5jy"
 
 [input]
 

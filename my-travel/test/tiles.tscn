@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmxk4n2guv8a5"]
+
+[ext_resource type="PackedScene" uid="uid://ea1rrodiuno6" path="res://assets/models/road/road_curve.tscn" id="1_lj7g4"]
+[ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="2_34s7t"]
+
+[node name="Node3D" type="Node3D" unique_id=1357036741]
+
+[node name="road-curve2" parent="." unique_id=1366952744 instance=ExtResource("1_lj7g4")]
+
+[node name="road-straight2" parent="." unique_id=247150468 instance=ExtResource("2_34s7t")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15, 0, 0)
