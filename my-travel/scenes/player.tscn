@@ -39,12 +39,12 @@ transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.996
 top_level = true
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=2100033369]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 2.9558268, -6.6560755)
+transform = Transform3D(1, 0, 0, 0, 0.9661803, -0.2578684, 0, 0.2578684, 0.9661803, 0, 4.4246163, -9.968676)
 collision_mask = 0
 script = SubResource("GDScript_fjrip")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1815684278]
-transform = Transform3D(-1, -1.8176223e-08, 8.5512376e-08, -1.7301645e-09, 0.9820708, 0.18851271, -8.740566e-08, 0.18851271, -0.9820708, 0, 0, -1.379477)
+transform = Transform3D(-1, -1.8176221e-08, 8.551238e-08, -1.7301645e-09, 0.9820708, 0.18851271, -8.740566e-08, 0.18851271, -0.9820708, 0, 0, 0)
 current = true
 
 [node name="ReverseCamera" type="Camera3D" parent="CameraPivot" unique_id=1743157631]

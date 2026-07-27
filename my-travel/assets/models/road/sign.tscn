@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dp2dv6nt3lyd0"]
 
 [ext_resource type="PackedScene" uid="uid://buqvoo7hq6py6" path="res://assets/models/mesh/sign-highway-detailed-mesh.glb" id="1_isix8"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/a normaltexture.png" id="2_icuw8"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_icuw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtrcd"]
 albedo_texture = ExtResource("2_icuw8")

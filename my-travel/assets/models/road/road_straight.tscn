@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kh7x3eo5u5nu"]
 
 [ext_resource type="PackedScene" uid="uid://ckut5qcdt7ii7" path="res://assets/models/mesh/road-straight-mesh.glb" id="1_62glo"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/a normaltexture.png" id="2_2m2f7"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_2m2f7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62glo"]
 albedo_texture = ExtResource("2_2m2f7")

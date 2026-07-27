@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ea1rrodiuno6"]
 
 [ext_resource type="PackedScene" uid="uid://bunth8s4kxa5" path="res://assets/models/mesh/road-curve-mesh.glb" id="1_da30e"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/a normaltexture.png" id="2_bviwc"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_bviwc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe838"]
 albedo_texture = ExtResource("2_bviwc")

@@ -15,8 +15,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -55.0
-offset_right = 134.0
+offset_left = 335.0
+offset_top = -247.0
+offset_right = 469.0
+offset_bottom = -192.0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="Panel" unique_id=811566975]
@@ -24,8 +26,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -52.0
+offset_top = -47.0
 offset_right = 126.0
+offset_bottom = 5.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "  Speed:"

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ci0c62yydrvd4"]
+
+[ext_resource type="Script" uid="uid://b8sgirvhqs4vm" path="res://scripts/spinning_wheel.gd" id="1_skc0w"]
+
+[node name="SpinningWheel" type="Node2D" unique_id=1811482798]
+script = ExtResource("1_skc0w")
+spin_speed = 3.2

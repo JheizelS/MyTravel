@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b07spbg66ptr5"]
 
 [ext_resource type="PackedScene" uid="uid://nxb522rpeyq5" path="res://assets/models/mesh/road-crossing-mesh.glb" id="1_mvdr4"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/a normaltexture.png" id="2_jqrw8"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_jqrw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssvng"]
 albedo_texture = ExtResource("2_jqrw8")
