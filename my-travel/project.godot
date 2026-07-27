@@ -12,7 +12,7 @@ config_version=5
 
 config/name="MyTravel"
 run/main_scene="uid://bd2fhfp4b1cpx"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 
 [autoload]
 
