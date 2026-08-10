@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx0hqyx11jaoj"]
 
-[ext_resource type="PackedScene" uid="uid://ulao8nnv1kpy" path="res://assets/models/mesh/construction-cone-mesh.glb" id="1_ul3bb"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_uqcfy"]
+[ext_resource type="PackedScene" uid="uid://ulao8nnv1kpy" path="res://assets/models/road_source/construction-cone-mesh.glb" id="1_ul3bb"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/road_textures.png" id="2_uqcfy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8xs3"]
 albedo_texture = ExtResource("2_uqcfy")

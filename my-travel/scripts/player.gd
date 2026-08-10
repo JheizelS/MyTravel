@@ -13,9 +13,22 @@ const MAX_PAN_ANGLE = 50.0
 @onready var spring_arm = $CameraPivot/SpringArm3D
 @onready var camera_3d = $CameraPivot/SpringArm3D/Camera3D
 @onready var reverse_camera = $CameraPivot/ReverseCamera
- 
+@onready var headlight_left: SpotLight3D = $HeadlightLeft
+@onready var headlight_right: SpotLight3D = $HeadlightRight
+@onready var needle: TextureRect = $CanvasLayer/Control/Needle
+@onready var engine_start_sound: AudioStreamPlayer3D = $EngineStart
+@onready var engine_idle_sound: AudioStreamPlayer3D = $EngineIdle
+
+
+@export var min_angle: float = 0.0
+@export var max_angle: float = 264.0
+@export var max_speed: float = 160.0
+
+
+var headlights_on = false
 var reverse_mode := false
 var camera_yaw := 0.0  # horizontal pan offset from car's heading
+var engine_running = false
  
 # 0-100 timer
 var timing := false
@@ -30,7 +43,15 @@ func _get_speed_scaled_steer() -> float:
 	var steer_factor = clamp(1.0 - (speed_kmh / 120.0) * 0.8, 0.2, 1.0)
 	return MAX_STEER * steer_factor
  
- 
+
+func _start_engine():
+	engine_running = true
+	engine_start_sound.play()
+	# Wait for the starter sound to finish, then loop the idle sound
+	await engine_start_sound.finished
+	engine_idle_sound.play()
+
+
 func _ready():
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -40,6 +61,8 @@ func _ready():
  
  
 func _input(event):
+	if event.is_action_pressed("start_engine") and not engine_running:
+		_start_engine()
 	# Laptop
 	if event is InputEventMouseMotion and not reverse_mode: # Only pan when using main camera
 		camera_yaw -= event.relative.x * MOUSE_SENSITIVITY
@@ -50,14 +73,23 @@ func _input(event):
 		camera_yaw -= event.relative.x * MOUSE_SENSITIVITY
 		# Clamp
 		camera_yaw = clamp(camera_yaw, deg_to_rad(-MAX_PAN_ANGLE), deg_to_rad(MAX_PAN_ANGLE))
+		
+	if event.is_action_pressed("toggle_headlights"):
+		headlights_on = !headlights_on
+		headlight_left.visible = headlights_on
+		headlight_right.visible = headlights_on
+
  
  
 func _physics_process(delta):
-	_check_camera_switch()
- 
+	_check_camera_switch() 
 	# Speed-scaled steering return rate (recalculated every frame)
 	var speed_kmh = linear_velocity.length() * 3.6
 	var return_rate = lerp(1.0, 3.5, clamp(speed_kmh / 100.0, 0.0, 1.0))
+	
+	# Speedometer -> Needle rotation
+	var ratio = clamp(speed_kmh / max_speed, 0.0, 1.0)
+	needle.rotation_degrees = lerp(min_angle, max_angle, ratio)
  
 	# Steering — smoothly moves toward input direction
 	steering = move_toward(
@@ -66,8 +98,9 @@ func _physics_process(delta):
 		delta * return_rate
 	)
 	# Acceleration/braking — engine force tapers off as speed approaches the cap
-	var speed_taper = clamp(1.0 - (speed_kmh / MAX_SPEED_KMH), 0.0, 1.0)
-	engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper
+	var speed_taper = clamp(1.0 - (speed_kmh / 120.0), 0.0, 1.0)	
+	engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper if engine_running else 0.0
+
  
 	# Snap pivot position to car each frame
 	camera_pivot.global_position = global_position

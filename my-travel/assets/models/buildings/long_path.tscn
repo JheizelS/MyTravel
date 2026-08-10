@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b3dsacy8c100v"]
+
+[ext_resource type="PackedScene" uid="uid://6ty4mlenkgy6" path="res://assets/models/buildings/building_source/path-long.glb" id="1_8v2rt"]
+[ext_resource type="Texture2D" uid="uid://1jhsqs0ce447" path="res://assets/models/buildings/textures/variation-c.png" id="2_hsytx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcdv7"]
+albedo_texture = ExtResource("2_hsytx")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_roxxd"]
+points = PackedVector3Array(-0.09681669, 0.009520701, -0.20317459, 0.1063492, 0.003175846, 0.20317459, 0.1063492, -0.003174603, 0.20317459, -0.1031746, -0.003174603, 0.20317459, 0.1063492, -0.003174603, -0.20317459, 0.07460068, 0.015873015, 0.20317459, 0.07460068, 0.015873015, -0.20317459, -0.077763475, 0.015873015, 0.20317459, -0.1031746, -0.003174603, -0.20317459, -0.077763475, 0.015873015, -0.20317459, -0.1031746, 0.003175846, 0.20317459, 0.1063492, 0.003175846, -0.20317459, -0.09681669, 0.009520701, 0.20317459, 0.09363338, 0.009520701, -0.20317459, -0.1031746, 0.003175846, -0.20317459, 0.09363338, 0.009520701, 0.20317459)
+
+[node name="long_path" unique_id=462400732 instance=ExtResource("1_8v2rt")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+
+[node name="path-long" parent="." index="0" unique_id=643587249]
+material_override = SubResource("StandardMaterial3D_jcdv7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=2029801783]
+shape = SubResource("ConvexPolygonShape3D_roxxd")

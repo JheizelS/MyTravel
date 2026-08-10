@@ -6,7 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://trpg1fd1qhjp" path="res://assets/models/car/back_right.tscn" id="3_fjrip"]
 [ext_resource type="PackedScene" uid="uid://cj0m5h2hcxlhh" path="res://assets/models/car/front_left.tscn" id="4_smehm"]
 [ext_resource type="PackedScene" uid="uid://c0wjgy5exr5lm" path="res://assets/models/car/car_body.tscn" id="5_ur7pv"]
+[ext_resource type="Script" uid="uid://ceix1rnoxw8bx" path="res://scripts/visual_input_indicator.gd" id="7_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://cf8bd6dtxl3nn" path="res://assets/keyboard assets/keyboard_w.png" id="7_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://dgbe06mx6olpk" path="res://scenes/speedometer.tscn" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://tjny0wb81np2" path="res://assets/keyboard assets/keyboard_a.png" id="8_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://bptuje1r5wxdm" path="res://assets/keyboard assets/keyboard_s.png" id="9_jej6c"]
+[ext_resource type="Texture2D" uid="uid://bhad4bys2jo06" path="res://assets/keyboard assets/keyboard_d.png" id="10_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://c1jmonl40eudp" path="res://assets/keyboard assets/keyboard_t.png" id="13_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://bs5cyfth1ej0v" path="res://assets/miscellaneous/white_headlight.png" id="14_i4ail"]
+[ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/NationalPark-Bold.ttf" id="14_oprun"]
+[ext_resource type="Texture2D" uid="uid://cc3hgc6x13mdw" path="res://assets/keyboard assets/keyboard_r.png" id="15_oprun"]
+[ext_resource type="Texture2D" uid="uid://3oy6owchp2sp" path="res://assets/miscellaneous/white_reverse_camera.png" id="16_a38lo"]
+[ext_resource type="Texture2D" uid="uid://faqrow2mynrf" path="res://assets/miscellaneous/speedometer.png" id="16_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://dkbtctb3ulhka" path="res://assets/miscellaneous/needle.png" id="17_qfm1y"]
+[ext_resource type="AudioStream" uid="uid://dhvwdecpwoafu" path="res://assets/audio/dragon-studio-car-engine-372477.mp3" id="18_4r5pv"]
+[ext_resource type="AudioStream" uid="uid://cfy1dh5xiyohf" path="res://assets/audio/freesound_community-car-engine-71198.mp3" id="19_4r5pv"]
 
 [sub_resource type="GDScript" id="GDScript_fjrip"]
 script/source = "extends SpringArm3D
@@ -96,4 +110,291 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=727400863]
 
-[node name="Control" parent="CanvasLayer" unique_id=642355020 instance=ExtResource("7_fjrip")]
+[node name="WASD" type="GridContainer" parent="CanvasLayer" unique_id=387010816]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = -50.0
+grow_vertical = 0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = -5
+columns = 3
+script = ExtResource("7_3v2ag")
+
+[node name="empty_space" type="Control" parent="CanvasLayer/WASD" unique_id=37310240]
+layout_mode = 2
+
+[node name="keyboard_w" type="TextureRect" parent="CanvasLayer/WASD" unique_id=2126119387]
+layout_mode = 2
+texture = ExtResource("7_d2wvv")
+stretch_mode = 5
+
+[node name="empty_space2" type="Control" parent="CanvasLayer/WASD" unique_id=814309908]
+layout_mode = 2
+
+[node name="keyboard_a" type="TextureRect" parent="CanvasLayer/WASD" unique_id=2139580778]
+layout_mode = 2
+texture = ExtResource("8_3v2ag")
+stretch_mode = 5
+
+[node name="keyboard_s" type="TextureRect" parent="CanvasLayer/WASD" unique_id=443856194]
+layout_mode = 2
+texture = ExtResource("9_jej6c")
+stretch_mode = 5
+
+[node name="keyboard_d" type="TextureRect" parent="CanvasLayer/WASD" unique_id=1793123025]
+layout_mode = 2
+texture = ExtResource("10_f1ej7")
+stretch_mode = 5
+
+[node name="Speedometer" parent="CanvasLayer" unique_id=642355020 instance=ExtResource("7_fjrip")]
+offset_left = -405.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer" unique_id=1181285813]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -525.0
+offset_right = 103.0
+offset_bottom = -393.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 3
+metadata/_edit_lock_ = true
+
+[node name="keyboard_t" type="TextureRect" parent="CanvasLayer/GridContainer" unique_id=93967823]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("13_f1ej7")
+stretch_mode = 5
+
+[node name="headlights_icon" type="TextureRect" parent="CanvasLayer/GridContainer" unique_id=79560396]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_i4ail")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="spacer" type="Control" parent="CanvasLayer/GridContainer" unique_id=196578966]
+layout_mode = 2
+
+[node name="keyboard_r" type="TextureRect" parent="CanvasLayer/GridContainer" unique_id=98177524]
+layout_mode = 2
+texture = ExtResource("15_oprun")
+stretch_mode = 5
+
+[node name="reverse_cam_icon" type="TextureRect" parent="CanvasLayer/GridContainer" unique_id=1643964750]
+layout_mode = 2
+texture = ExtResource("16_a38lo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1290982575]
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 40.0
+pivot_offset = Vector2(150, 150)
+
+[node name="Speedometer2" type="TextureRect" parent="CanvasLayer/Control" unique_id=866002796]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1594.0
+offset_top = 670.0
+offset_right = 1894.0
+offset_bottom = 970.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("16_qfm1y")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="0km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=1162010612]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -54.0
+offset_right = -118.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="20km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=2060642434]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -74.0
+offset_right = -180.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "20"
+
+[node name="40km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=1266477279]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -120.0
+offset_right = -225.0
+offset_bottom = -71.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "40"
+
+[node name="60km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=306238119]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -185.0
+offset_right = -235.0
+offset_bottom = -136.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "60"
+
+[node name="80km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=566785662]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -240.0
+offset_right = -207.0
+offset_bottom = -191.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "80"
+
+[node name="100km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=787604177]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -277.0
+offset_right = -145.0
+offset_bottom = -228.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="120km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=1696645616]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -278.0
+offset_right = -80.0
+offset_bottom = -229.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "120"
+
+[node name="140km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=1450486617]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -238.0
+offset_right = -33.0
+offset_bottom = -189.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "140"
+
+[node name="160km" type="Label" parent="CanvasLayer/Control/Speedometer2" unique_id=2117445936]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 113.0
+offset_right = 288.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_font_sizes/font_size = 25
+text = "160"
+
+[node name="Needle" type="TextureRect" parent="CanvasLayer/Control" unique_id=41649039]
+layout_mode = 0
+offset_left = 1711.0
+offset_top = 828.0
+offset_right = 1772.0
+offset_bottom = 1025.5
+pivot_offset = Vector2(31, 29)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("17_qfm1y")
+expand_mode = 1
+metadata/_edit_group_ = true
+
+[node name="HeadlightRight" type="SpotLight3D" parent="." unique_id=428431682]
+transform = Transform3D(-1, -1.5180808e-08, 8.609463e-08, 0, 0.9848078, 0.1736482, -8.742278e-08, 0.1736482, -0.9848078, 0.86452985, 0, 1.9143775)
+light_color = Color(0.9372549, 0.92156863, 0.84705883, 1)
+light_energy = 30.0
+spot_range = 45.0
+spot_angle = 35.0
+
+[node name="HeadlightLeft" type="SpotLight3D" parent="." unique_id=1690934713]
+transform = Transform3D(-1, -1.5180808e-08, 8.609463e-08, 0, 0.9848078, 0.1736482, -8.742278e-08, 0.1736482, -0.9848078, -0.91410744, 0, 2.2079499)
+light_color = Color(0.9372549, 0.92156863, 0.84705883, 1)
+light_energy = 30.0
+spot_range = 45.0
+spot_angle = 35.0
+
+[node name="EngineStart" type="AudioStreamPlayer3D" parent="." unique_id=174892986]
+stream = ExtResource("18_4r5pv")
+volume_db = 5.0
+
+[node name="EngineIdle" type="AudioStreamPlayer3D" parent="." unique_id=1523863392]
+stream = ExtResource("19_4r5pv")
+volume_db = -20.0

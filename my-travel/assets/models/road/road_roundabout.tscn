@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b05lp106i3of3"]
 
-[ext_resource type="PackedScene" uid="uid://c73ancbkejuga" path="res://assets/models/mesh/road-roundabout.glb" id="1_vmtnn"]
-[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/asset_textures.png" id="2_4tgca"]
+[ext_resource type="PackedScene" uid="uid://c73ancbkejuga" path="res://assets/models/road_source/road-roundabout.glb" id="1_vmtnn"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/road_textures.png" id="2_4tgca"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcf0h"]
 albedo_texture = ExtResource("2_4tgca")

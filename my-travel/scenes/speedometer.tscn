@@ -2,23 +2,22 @@
 
 [ext_resource type="Script" uid="uid://b4mg6444jcs0f" path="res://scripts/label.gd" id="1_gcven"]
 
-[node name="Control" type="Control" unique_id=642355020]
+[node name="Speedometer" type="Control" unique_id=642355020]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="." unique_id=1219654859]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 335.0
-offset_top = -247.0
-offset_right = 469.0
-offset_bottom = -192.0
+offset_left = 1694.0
+offset_top = -179.0
+offset_right = 1828.0
+offset_bottom = -124.0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="Panel" unique_id=811566975]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bkf30phre8m2x"]
+
+[ext_resource type="PackedScene" uid="uid://dcimswhjm6qe6" path="res://assets/models/buildings/building_source/building-type-c.glb" id="1_55sku"]
+[ext_resource type="Texture2D" uid="uid://1jhsqs0ce447" path="res://assets/models/buildings/textures/variation-c.png" id="2_dilfk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5yoc"]
+albedo_texture = ExtResource("2_dilfk")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t341x"]
+points = PackedVector3Array(-0.58459264, 0.01406219, -0.36409998, 0.23454842, 1.02905, 0.06479994, 0.23456208, 0.87262076, 0.3776584, 0.5918642, 0.0077354684, -0.46730754, 0.61016244, 0.008977165, 0.45893753, -0.6329429, 0.43920135, 0.49647087, -0.24683194, 0.8054133, -0.37377504, -0.61796683, 0.0024549891, 0.46473315, 0.59423256, 0.6320413, -0.3471054, 0.598437, 0.617192, 0.4886981, -0.2541752, 1.0290518, 0.06480019, -0.6534095, 0.43920135, -0.36080524, 0.20414016, -0.01010561, -0.5243095, -0.23464003, 0.8139614, 0.49509734, 0.23167513, 0.81029093, -0.38021362, 0.6007506, 0.8210418, 0.08082188, 0.57164323, 0.05111155, -0.5243095, 0.61244845, 0.05111155, -0.48343343, -0.6183372, 0.0021443423, -0.3525628, -0.6534095, 0.43920135, 0.47608382, -0.20854752, 0.786038, -0.39219433, -0.6329429, 0.43920135, -0.38129425, 0.23244695, 0.8112555, 0.49049515, -0.08007085, -1.110223e-16, 0.46705166, -0.25377476, 0.8329962, -0.34510753, 0.20414016, 0.05111155, -0.5243095, 0.5568931, 0.61349565, -0.38420475, 0.19011676, 0.78687495, -0.39342025, 0.59393984, 0.8176373, 0.02417473, 0.23415609, 0.8329647, -0.34517053, -0.25422552, 0.8335509, 0.45581585, 0.555027, 0.0053242785, -0.5091749)
+
+[node name="house_3" unique_id=2126363553 instance=ExtResource("1_55sku")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+
+[node name="building-type-c" parent="." index="0" unique_id=186418252]
+material_override = SubResource("StandardMaterial3D_j5yoc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1355171824]
+shape = SubResource("ConvexPolygonShape3D_t341x")

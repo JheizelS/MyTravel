@@ -12,5 +12,6 @@ func _process(delta):
 		# Only show speed if above threshold, otherwise show 0
 		if speed_kmh > speed_threshold:
 			text = str(round(speed_kmh)) + " km/h"
+		
 		else:
 			text = "0 km/h"

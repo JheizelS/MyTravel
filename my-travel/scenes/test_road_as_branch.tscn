@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c12rhnxfxxn4u"]
+
+[ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="1_6kmoe"]
+[ext_resource type="PackedScene" uid="uid://ea1rrodiuno6" path="res://assets/models/road/road_curve.tscn" id="2_bk7bi"]
+[ext_resource type="PackedScene" uid="uid://bkf30phre8m2x" path="res://assets/models/buildings/house_3.tscn" id="3_mkdyc"]
+[ext_resource type="PackedScene" uid="uid://sws10s1jup3k" path="res://assets/models/buildings/house.tscn" id="4_pqe4r"]
+
+[node name="road" type="Node3D" unique_id=276819400]
+
+[node name="road-straight2" parent="." unique_id=247150468 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45, 0, 0)
+
+[node name="road-straight3" parent="." unique_id=827285288 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 15, 0, 0)
+
+[node name="road-straight4" parent="." unique_id=58786482 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -15, 0, 0)
+
+[node name="road-straight5" parent="." unique_id=583617190 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -30, 0, 0)
+
+[node name="road-straight6" parent="." unique_id=2067131216 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 30, 0, 0)
+
+[node name="road-straight7" parent="." unique_id=560176487 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(-6.5567076e-07, -6.5567076e-07, -14.999999, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -6.556707e-07, -75, 0, 30)
+
+[node name="road-curve2" parent="." unique_id=1366952744 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 75, 0, 15)
+
+[node name="road-curve3" parent="." unique_id=1043112103 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(-14.999999, 5.7320536e-14, 1.3113414e-06, -5.7320536e-14, 14.999999, -1.3113414e-06, -1.3113414e-06, -1.3113414e-06, -14.999999, -75, 0, 30)
+
+[node name="road-curve7" parent="." unique_id=91891696 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(-14.999999, 5.7320536e-14, 1.3113414e-06, -5.7320536e-14, 14.999999, -1.3113414e-06, -1.3113414e-06, -1.3113414e-06, -14.999999, 60, 0, 15)
+
+[node name="road-curve9" parent="." unique_id=666359768 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(-14.999999, 0, -4.767976e-07, 5.684342e-14, 14.999999, -1.3113415e-06, 4.7679754e-07, -1.3113415e-06, -14.999999, -15.154007, 0, 75)
+
+[node name="road-curve5" parent="." unique_id=750145496 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(1.1324682e-06, 6.5567053e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567053e-07, -14.999999, -6.556708e-07, 1.1324682e-06, 75, 0, 60)
+
+[node name="road-curve10" parent="." unique_id=191075114 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(14.999999, -6.556708e-07, 2.622683e-06, 6.5567065e-07, 14.999999, 6.556708e-07, -2.622683e-06, -6.5567076e-07, 14.999999, -0.14571762, 0.02368164, 75.01091)
+
+[node name="road-curve8" parent="." unique_id=727265098 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(-6.5567076e-07, 6.5567076e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567076e-07, -14.999999, -6.5567076e-07, -6.556707e-07, -45, 0, -15)
+
+[node name="road-straight12" parent="." unique_id=1889543185 instance=ExtResource("1_6kmoe")]
+
+[node name="road-straight17" parent="." unique_id=932654327 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 45, 0, 105)
+
+[node name="road-straight18" parent="." unique_id=757145603 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 30, 0, 105)
+
+[node name="road-curve12" parent="." unique_id=592120771 instance=ExtResource("2_bk7bi")]
+transform = Transform3D(-6.556708e-07, 0, -15, 0, 15, 0, 15, 0, -6.556708e-07, 75, 0, 75)
+
+[node name="road-straight22" parent="." unique_id=1020900528 instance=ExtResource("1_6kmoe")]
+transform = Transform3D(-14.999999, 1.1368684e-13, 1.3113417e-06, -5.684342e-14, 14.999999, -1.3113414e-06, -1.3113416e-06, -1.3113415e-06, -14.999999, -45, 0, 45)
+
+[node name="house_3" parent="." unique_id=2126363553 instance=ExtResource("3_mkdyc")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 86.26658, 0, -2.9360352)
+
+[node name="house" parent="." unique_id=878083087 instance=ExtResource("4_pqe4r")]
+transform = Transform3D(-1, 3.821371e-15, 8.742278e-08, -3.821371e-15, 1, -8.742278e-08, -8.742278e-08, -8.742278e-08, -1, -29.036419, 0, -25.360466)

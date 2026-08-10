@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://sws10s1jup3k"]
+
+[ext_resource type="PackedScene" uid="uid://xlepihgf8ype" path="res://assets/models/buildings/building_source/building-type-a.glb" id="1_pigok"]
+[ext_resource type="Texture2D" uid="uid://1jhsqs0ce447" path="res://assets/models/buildings/textures/variation-c.png" id="1_vm1se"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77a8t"]
+albedo_texture = ExtResource("1_vm1se")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_drgk5"]
+points = PackedVector3Array(0.21657085, 0.5998355, 0.5041143, -0.56125575, 0.001734509, -0.509426, -0.5986997, 0.0035237297, -0.4672438, 0.6022827, 0.0010569958, 0.4736173, 0.660162, 0.4435882, -0.3798902, -0.6022942, 0.0010670463, 0.47360575, -0.25, 0.8069401, 0.011373591, 0.56123775, 0.0017284956, -0.5094335, -0.6601882, 0.4435882, -0.3798902, -0.6378756, 0.4027765, 0.4901735, 0.59868634, 0.6278676, 0.06716729, 0.19558452, 0.5985394, -0.39923078, 0.63786983, 0.40277618, 0.4901891, 0.25, 0.80698144, 0.011374598, -0.598894, 0.6278577, 0.06718711, -0.23627077, 0.61937976, 0.4842004, -0.19561075, 0.5985394, -0.39923078, 0.5776886, 0.051627725, -0.52441746, 0.25, 0.80698144, 0.0882834, 0.61736727, 0.0043917242, -0.34673274, -0.59018964, 0.38324407, 0.50351155, -0.62, 0.0026678916, 0.4518006, -0.25, 0.8069401, 0.08827432, 0.62, 0.0026505468, 0.45181966, 0.59011847, 0.3831674, 0.50347334, -0.6189515, 0.4229674, -0.4211984, -0.6189515, 0.051627725, -0.48310924, -0.23333907, 0.6168151, -0.37747678, 0.6189253, 0.4229674, -0.4211984, 0.23331077, 0.6168133, -0.3774734, 0.23625354, 0.6193877, 0.4842188, 0.6189253, 0.051627725, -0.48310924)
+
+[node name="house" unique_id=878083087 instance=ExtResource("1_pigok")]
+
+[node name="building-type-a" parent="." index="0" unique_id=745555953]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_77a8t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1591252564]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_drgk5")

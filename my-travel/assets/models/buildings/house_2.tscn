@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cb8ixw4llgyxu"]
+
+[ext_resource type="PackedScene" uid="uid://cpt0pvn6i6m3e" path="res://assets/models/buildings/building_source/building-type-b.glb" id="1_oxaae"]
+[ext_resource type="Texture2D" uid="uid://1jhsqs0ce447" path="res://assets/models/buildings/textures/variation-c.png" id="2_lqos2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2oeq"]
+albedo_texture = ExtResource("2_lqos2")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxaae"]
+points = PackedVector3Array(-0.9283916, -0.0143944025, -0.0041905046, 0.4742316, 1.1238263, 0.4421774, 0.4736384, 1.1231282, -0.45, 0.876, 0.00071960315, -0.3997655, 0.8123609, 0.043660104, 0.48898843, -0.8122444, 0.42084372, 0.4599044, -0.8122444, 0.44981414, -0.439315, -0.8122444, 0.7398593, 0.05375035, 0.9285079, 0.7688297, 0.460018, 0.46428308, -0.0143944025, -0.58450794, 0.05785911, -0.0143944025, 0.57612693, 0.88607585, 0.8149551, -0.41942888, -0.7637921, 8.757433e-05, -0.40020788, -0.9283916, 0.072630525, 0.40196353, 0.40611866, 1.146127, -0.46839902, 0.40611866, 1.146127, 0.460018, 0.8149065, 0.003785074, -0.5663267, 0.8627171, 0.009289555, 0.41328287, -0.78334403, 0.42084372, -0.46839902, 0.46428308, 0.07274413, 0.57612693, -0.8122444, 0.7398593, -0.06213136, -0.89483345, 0.006578708, 0.38728338, 0.7781725, 0.92712057, -0.3376392, 0.05785911, 0.072630525, 0.57612693, 0.46428308, 0.07274413, -0.58450794, 0.86377907, 0.81653863, -0.45, -0.8122444, 0.50775504, 0.3728795, 0.7355336, 0.9472078, 0.35, -0.9283916, 0.072630525, -0.0041905046, 0.8123609, 0.71077526, 0.48898843, 0.60914886, 0.10171455, -0.58450794, 0.5515512, 1.0897808, -0.33507246)
+
+[node name="house2" unique_id=638780458 instance=ExtResource("1_oxaae")]
+
+[node name="building-type-b" parent="." index="0" unique_id=1955788183]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_l2oeq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=270764237]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_oxaae")

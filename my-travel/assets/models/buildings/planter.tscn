@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://6wc58m2j2tqn"]
+
+[ext_resource type="PackedScene" uid="uid://hiwbdlv0ef8g" path="res://assets/models/buildings/building_source/planter.glb" id="1_ys0iq"]
+[ext_resource type="Texture2D" uid="uid://1jhsqs0ce447" path="res://assets/models/buildings/textures/variation-c.png" id="2_b8ulk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2dso"]
+albedo_texture = ExtResource("2_b8ulk")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ngfc"]
+points = PackedVector3Array(-0.15321416, 0, -0.14852008, -0.17099579, 0.0003174997, -0.1418814, 0.15920247, 7.7412486e-05, 0.14560463, 0.08884579, 0.17478085, -0.090233505, 0.18388022, 0, -0.13624994, -0.1838975, 0, 0.13346262, -0.101291105, 0.17531765, 0.07607085, 0.19044702, 0.05397757, 0.13827893, -0.19046566, 0.05397757, -0.14106625, 0.19044702, 0.05397757, -0.14106625, -0.19046566, 0.05397757, 0.13827893, 0.09522879, 0.18095237, -0.020426363, -0.08833786, 0.13895766, -0.09564241, 0.09492398, 0.13930845, 0.093515396, 0.1587076, 0.05397757, -0.1537746, -0.16505027, 0.05397757, 0.15098728, -0.070843756, 0.17448662, 0.09304977, 0.16503163, 0.05397757, 0.15098728, -0.15868647, 0.05397757, -0.1537746, 0.20317459, 0.05397757, 0.11289205, -0.20315346, 0.05397757, -0.109325185, 0.20317459, 0.05397757, -0.109325185, 0.19608118, 3.976239e-05, 0.10890179, -0.20315346, 0.05397757, 0.11289205, -0.19614778, 1.3877788e-17, -0.1056034, 0.106939614, 0.17506814, -0.060818322, -0.09674832, 0.17144182, 0.032766175, -0.15921439, 8.0381156e-05, 0.14559971, 0.15323529, 0, -0.14852008, 0.19616891, -1.3877788e-17, -0.1056034, -0.11202659, 0.13902207, -0.06627475, -0.1960772, 3.199053e-05, 0.10891144)
+
+[node name="planter" unique_id=854400652 instance=ExtResource("1_ys0iq")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
+
+[node name="planter" parent="." index="0" unique_id=1570774006]
+material_override = SubResource("StandardMaterial3D_a2dso")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=931385388]
+shape = SubResource("ConvexPolygonShape3D_2ngfc")
