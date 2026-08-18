@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cw11riyrhiesl"]
+
+[ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/NationalPark-Bold.ttf" id="1_7lbvh"]
+[ext_resource type="Script" uid="uid://1uiykygric0s" path="res://scripts/localisation/language_selection.gd" id="1_a2piv"]
+
+[sub_resource type="Theme" id="Theme_dm6ti"]
+
+[node name="LanguageSelection" type="Control" unique_id=1629916978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a2piv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=744316445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1401952073]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=1202230840]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=81161511]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_7lbvh")
+theme_override_font_sizes/font_size = 30
+text = "Select your Language"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=94776208]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="EnglishButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1686451196]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "English"
+
+[node name="MaoriButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=912321556]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Māori"
+
+[node name="ChineseButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=661857256]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "中文"
+
+[node name="HindiButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1950804148]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "हिन्दी"
+
+[node name="KoreanButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=499526551]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "한국어"
+
+[node name="FilipinoButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1968873885]
+layout_mode = 2
+theme = SubResource("Theme_dm6ti")
+theme_override_font_sizes/font_size = 50
+text = "Filipino"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/EnglishButton" to="." method="_on_english_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/MaoriButton" to="." method="_on_maori_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/ChineseButton" to="." method="_on_chinese_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/HindiButton" to="." method="_on_hindi_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/KoreanButton" to="." method="_on_korean_button_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/GridContainer/FilipinoButton" to="." method="_on_filipino_button_pressed"]

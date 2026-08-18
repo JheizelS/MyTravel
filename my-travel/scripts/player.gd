@@ -8,17 +8,17 @@ const MAX_SPEED_KMH = 120.0
 # Camera pan settings
 const MOUSE_SENSITIVITY = 0.0025
 const MAX_PAN_ANGLE = 50.0
- 
+
+@onready var wheels: Array[VehicleWheel3D] = [$front_left, $front_right, $back_left, $back_right]
 @onready var camera_pivot = $CameraPivot
 @onready var spring_arm = $CameraPivot/SpringArm3D
 @onready var camera_3d = $CameraPivot/SpringArm3D/Camera3D
 @onready var reverse_camera = $CameraPivot/ReverseCamera
 @onready var headlight_left: SpotLight3D = $HeadlightLeft
 @onready var headlight_right: SpotLight3D = $HeadlightRight
-@onready var needle: TextureRect = $CanvasLayer/Control/Needle
+@onready var needle: TextureRect = $CanvasLayer/Speedometer/Needle
 @onready var engine_start_sound: AudioStreamPlayer3D = $EngineStart
 @onready var engine_idle_sound: AudioStreamPlayer3D = $EngineIdle
-
 
 @export var min_angle: float = 0.0
 @export var max_angle: float = 264.0
@@ -29,6 +29,8 @@ var headlights_on = false
 var reverse_mode := false
 var camera_yaw := 0.0  # horizontal pan offset from car's heading
 var engine_running = false
+var _off_road_warned := false 
+var _off_road_check_enabled := false
  
 # 0-100 timer
 var timing := false
@@ -58,6 +60,10 @@ func _ready():
 	# Start with main camera active
 	camera_3d.current = true
 	reverse_camera.current = false
+	
+	# Give the car a moment to settle onto the road before monitoring off-road state
+	await get_tree().create_timer(1.5).timeout
+	_off_road_check_enabled = true
  
  
 func _input(event):
@@ -83,6 +89,8 @@ func _input(event):
  
 func _physics_process(delta):
 	_check_camera_switch() 
+	
+	_check_off_road()
 	# Speed-scaled steering return rate (recalculated every frame)
 	var speed_kmh = linear_velocity.length() * 3.6
 	var return_rate = lerp(1.0, 3.5, clamp(speed_kmh / 100.0, 0.0, 1.0))
@@ -101,7 +109,6 @@ func _physics_process(delta):
 	var speed_taper = clamp(1.0 - (speed_kmh / 120.0), 0.0, 1.0)	
 	engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper if engine_running else 0.0
 
- 
 	# Snap pivot position to car each frame
 	camera_pivot.global_position = global_position
 	# Smoothly rotate pivot to match car heading + any pan offset
@@ -147,3 +154,20 @@ func _check_camera_switch():
 	else:
 		camera_3d.current = true
 		reverse_camera.current = false
+
+func _check_off_road():
+	if not _off_road_check_enabled:
+		return
+
+	var on_road_count := 0
+	for wheel in wheels:
+		var contact = wheel.get_contact_body()
+		if contact and contact.is_in_group("road"):
+			on_road_count += 1
+
+	if on_road_count <= 1 and not _off_road_warned:
+		_off_road_warned = true
+		DialogueBox.show_dialogue("Instructor", "You've left the road — head back to the marked lane.")
+	elif on_road_count >= 3 and _off_road_warned:
+		_off_road_warned = false
+		DialogueBox.hide_dialogue()

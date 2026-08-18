@@ -4,8 +4,9 @@ extends GridContainer
 @onready var a_key = $keyboard_a
 @onready var s_key = $keyboard_s
 @onready var d_key = $keyboard_d
-@onready var keyboard_t: TextureRect = $"../GridContainer/keyboard_t"
-@onready var keyboard_r: TextureRect = $"../GridContainer/keyboard_r"
+@onready var keyboard_t: TextureRect = $"../SideUIContainer/keyboard_t"
+@onready var keyboard_r: TextureRect = $"../SideUIContainer/keyboard_r"
+
 
 
 var reverse_camera_on = false

@@ -4,6 +4,6 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		body.global_position = respawn_point.global_position
+		body.global_transform = respawn_point.global_transform
 		body.linear_velocity = Vector3.ZERO
 		body.angular_velocity = Vector3.ZERO
