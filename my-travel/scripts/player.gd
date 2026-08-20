@@ -19,6 +19,8 @@ const MAX_PAN_ANGLE = 50.0
 @onready var needle: TextureRect = $CanvasLayer/Speedometer/Needle
 @onready var engine_start_sound: AudioStreamPlayer3D = $EngineStart
 @onready var engine_idle_sound: AudioStreamPlayer3D = $EngineIdle
+@onready var wrong_lane_detector: Area3D = $WrongLaneDetector
+
 
 @export var min_angle: float = 0.0
 @export var max_angle: float = 264.0
@@ -31,6 +33,7 @@ var camera_yaw := 0.0  # horizontal pan offset from car's heading
 var engine_running = false
 var _off_road_warned := false 
 var _off_road_check_enabled := false
+var _in_wrong_lane := false
  
 # 0-100 timer
 var timing := false
@@ -67,6 +70,9 @@ func _ready():
  
  
 func _input(event):
+	
+	if PauseMenu.is_paused:
+		return
 	if event.is_action_pressed("start_engine") and not engine_running:
 		_start_engine()
 	# Laptop
@@ -89,8 +95,9 @@ func _input(event):
  
 func _physics_process(delta):
 	_check_camera_switch() 
-	
+
 	_check_off_road()
+	_check_wrong_lane()
 	# Speed-scaled steering return rate (recalculated every frame)
 	var speed_kmh = linear_velocity.length() * 3.6
 	var return_rate = lerp(1.0, 3.5, clamp(speed_kmh / 100.0, 0.0, 1.0))
@@ -98,17 +105,19 @@ func _physics_process(delta):
 	# Speedometer -> Needle rotation
 	var ratio = clamp(speed_kmh / max_speed, 0.0, 1.0)
 	needle.rotation_degrees = lerp(min_angle, max_angle, ratio)
- 
-	# Steering — smoothly moves toward input direction
-	steering = move_toward(
-		steering,
-		Input.get_axis("steer_right", "steer_left") * _get_speed_scaled_steer(),
-		delta * return_rate
-	)
-	# Acceleration/braking — engine force tapers off as speed approaches the cap
-	var speed_taper = clamp(1.0 - (speed_kmh / 120.0), 0.0, 1.0)	
-	engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper if engine_running else 0.0
-
+	
+	if PauseMenu.is_paused:
+		steering = move_toward(steering, 0.0, delta * return_rate)
+		engine_force = 0.0
+	else:
+		steering = move_toward(
+			steering,
+			Input.get_axis("steer_right", "steer_left") * _get_speed_scaled_steer(),
+			delta * return_rate
+		)
+		var speed_taper = clamp(1.0 - (speed_kmh / 120.0), 0.0, 1.0)	
+		engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper if engine_running else 0.0
+	
 	# Snap pivot position to car each frame
 	camera_pivot.global_position = global_position
 	# Smoothly rotate pivot to match car heading + any pan offset
@@ -167,7 +176,25 @@ func _check_off_road():
 
 	if on_road_count <= 1 and not _off_road_warned:
 		_off_road_warned = true
-		DialogueBox.show_dialogue("Instructor", "You've left the road — head back to the marked lane.")
+		DialogueBox.show_dialogue("Instructor", "You've left the road — head back to the lane.", "off_road")
 	elif on_road_count >= 3 and _off_road_warned:
 		_off_road_warned = false
-		DialogueBox.hide_dialogue()
+		DialogueBox.hide_dialogue("off_road")
+		
+		
+func _check_wrong_lane():
+	var overlapping_areas = wrong_lane_detector.get_overlapping_areas()
+	print("Overlapping areas: ", overlapping_areas)
+	var in_wrong_lane_now := false
+ 
+	for area in overlapping_areas:
+		if area.is_in_group("WrongLaneZone"):
+			in_wrong_lane_now = true
+			break
+
+	if in_wrong_lane_now and not _in_wrong_lane:
+		_in_wrong_lane = true
+		DialogueBox.show_dialogue("Instructor", "You're on the wrong side of the road — move back to the left lane.", "wrong_lane")
+	elif not in_wrong_lane_now and _in_wrong_lane:
+		_in_wrong_lane = false
+		DialogueBox.hide_dialogue("wrong_lane")

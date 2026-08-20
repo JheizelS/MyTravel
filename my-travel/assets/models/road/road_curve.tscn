@@ -9,13 +9,39 @@ albedo_texture = ExtResource("2_bviwc")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_da30e"]
 points = PackedVector3Array(-1, 0, -1, -1, 0, -0.00019574165, -1, 0.02, -1, -0.7390368, 0, -0.9829679, -1, 0.02, -0.00019574165, -0.00019574165, 0, 1, -0.7390368, 0.02, -0.9829679, -0.48257637, 0, -0.9318716, -0.00019574165, 0.02, 1, 1, 0, 1, -0.48257637, 0.02, -0.9318716, -0.23472983, 0, -0.84788567, 1, 0.02, 1, 0.9827721, 0, 0.73884106, -0.23472983, 0.02, -0.84788567, -0.00019574165, 0, -0.73218477, 0.9827721, 0.02, 0.73884106, 0.9316758, 0, 0.48218477, -0.00019574165, 0.02, -0.73218477, 0.217502, 0, -0.58672667, 0.9316758, 0.02, 0.48218477, 0.84768987, 0, 0.23453403, 0.217502, 0.02, -0.58672667, 0.41405642, 0, -0.41425216, 0.84768987, 0.02, 0.23453403, 0.731989, 0, -0.00019574165, 0.41405642, 0.02, -0.41425216, 0.5865309, 0, -0.21769774, 0.731989, 0.02, -0.00019574165, 0.5865309, 0.02, -0.21769774)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dm6ti"]
+radius = 0.20164348
+
 [node name="road-curve2" unique_id=1366952744 instance=ExtResource("1_da30e")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
-[node name="road-curve" parent="." index="0" unique_id=1936415472]
+[node name="road-curve" parent="." index="0" unique_id=1024767036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 material_override = SubResource("StandardMaterial3D_xe838")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=17582360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 shape = SubResource("ConvexPolygonShape3D_da30e")
+
+[node name="WrongLaneZone" type="Area3D" parent="." index="2" unique_id=1422382206 groups=["WrongLaneZone"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WrongLaneZone" index="0" unique_id=1552814758]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.4630797, -0.0011786141, -1.1830214)
+shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WrongLaneZone" index="1" unique_id=1562603491]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, -1.1407803, -0.00092290214, -0.9270427)
+shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WrongLaneZone" index="2" unique_id=742446870]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, -0.73977697, -0.00061155914, -0.20870258)
+shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="WrongLaneZone" index="3" unique_id=1666442865]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.8765169, -0.00071360235, -0.6067303)
+shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WrongLaneZone" index="4" unique_id=2080908332]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1.8771192, -0.0015078225, -1.2890083)
+shape = SubResource("SphereShape3D_dm6ti")

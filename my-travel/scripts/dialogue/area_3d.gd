@@ -1,5 +1,5 @@
 extends Area3D
-
+ 
 @export var speaker_name: String = "Welcome to MyTravel!"
 @export var dialogue_text: String = "To firstly introduce you to the NZ roads, we drive on the left." + " Keep to the left side of the road."
 @export var trigger_once: bool = true
@@ -19,12 +19,11 @@ func _on_body_entered(body: Node3D) -> void:
 		return
  
 	_has_triggered = true
-	DialogueBox.show_dialogue(speaker_name, dialogue_text)
+	DialogueBox.show_dialogue(speaker_name, dialogue_text, "intro")
  
  
 func _on_body_exited(body: Node3D) -> void:
 	if body.name != "Player":
 		return
  
-	DialogueBox.hide_dialogue()
- 
+	DialogueBox.hide_dialogue("intro")

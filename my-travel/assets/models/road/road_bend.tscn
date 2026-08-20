@@ -9,13 +9,36 @@ albedo_texture = ExtResource("2_dx3dy")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q26yr"]
 points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.02, -0.5, -0.3695184, 0, -0.49148396, -0.5, 0.02, 0.5, 0.5, 0, 0.5, -0.3695184, 0.02, -0.49148396, -0.24128819, 0, -0.4659358, 0.5, 0.02, 0.5, 0.49138606, 0, 0.36942053, -0.24128819, 0.02, -0.4659358, -0.11736491, 0, -0.42394283, 0.49138606, 0.02, 0.36942053, 0.4658379, 0, 0.24109238, -0.11736491, 0.02, -0.42394283, -9.787083e-05, 0, -0.36609238, 0.4658379, 0.02, 0.24109238, 0.42384493, 0, 0.11726701, -9.787083e-05, 0.02, -0.36609238, 0.108751, 0, -0.29336333, 0.42384493, 0.02, 0.11726701, 0.3659945, 0, -9.787083e-05, 0.108751, 0.02, -0.29336333, 0.20702821, 0, -0.20712608, 0.3659945, 0.02, -9.787083e-05, 0.29326546, 0, -0.10884887, 0.20702821, 0.02, -0.20712608, 0.29326546, 0.02, -0.10884887)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dm6ti"]
+radius = 0.19430268
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q26yr"]
+radius = 0.1187837
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dx3dy"]
+radius = 0.12679315
+
 [node name="road_bend" unique_id=902432348 instance=ExtResource("1_q26yr")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1, 0, 0)
 
-[node name="road-bend" parent="." index="0" unique_id=802661063]
+[node name="road-bend" parent="." index="0" unique_id=275683125]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.43335646, -0.00042635598, -0.49998358)
 material_override = SubResource("StandardMaterial3D_88y82")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=1225001647]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.43335646, -0.00042635598, -0.49998358)
 shape = SubResource("ConvexPolygonShape3D_q26yr")
+
+[node name="WrongLaneZone" type="Area3D" parent="." index="2" unique_id=890967660 groups=["WrongLaneZone"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WrongLaneZone" index="0" unique_id=502092853]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.1744418, 0.0004545846, -0.20989165)
+shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WrongLaneZone" index="1" unique_id=1979765147]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0.025, 0.001, -0.362)
+shape = SubResource("SphereShape3D_q26yr")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WrongLaneZone" index="2" unique_id=506729397]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0.31, 0.001, -0.092)
+shape = SubResource("SphereShape3D_dx3dy")
