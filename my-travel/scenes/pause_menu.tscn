@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3aw4gd4hgklw"]
 
-[ext_resource type="Script" uid="uid://pbo18rp2qexw" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://pbo18rp2qexw" path="res://scripts/UI/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="FontFile" uid="uid://0y50hri0q44p" path="res://assets/fonts/NationalPark-Light.ttf" id="2_myx47"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87rw"]
 bg_color = Color(0, 0, 0, 0.7607843)
@@ -33,11 +34,19 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="PauseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/PauseTitle" unique_id=1299720472]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -335.0
-offset_top = 7.0
+offset_top = -90.0
 offset_right = 335.0
-offset_bottom = 187.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_myx47")
 theme_override_font_sizes/font_size = 125
 text = "Resumed"
 

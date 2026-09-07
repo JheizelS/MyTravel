@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://c12rhnxfxxn4u"]
 
 [ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="1_6kmoe"]
+[ext_resource type="PackedScene" uid="uid://vihsdk0d1dpx" path="res://assets/models/road/road_end.tscn" id="2_6kmoe"]
 [ext_resource type="PackedScene" uid="uid://ea1rrodiuno6" path="res://assets/models/road/road_curve.tscn" id="2_bk7bi"]
 [ext_resource type="PackedScene" uid="uid://vrstv1uuhno0" path="res://assets/models/road/road_bend.tscn" id="5_bk7bi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm6ti"]
+size = Vector3(0.001, 1, 1.8354492)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dm6ti"]
 radius = 0.20164348
@@ -27,8 +31,15 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 30, -0.05, 0)
 [node name="road-straight6" parent="." unique_id=560176487 groups=["road"] instance=ExtResource("1_6kmoe")]
 transform = Transform3D(1.966997e-06, 6.3602147e-07, 14.999999, 0.023888875, 14.999981, -6.391534e-07, -14.999979, 0.023888875, 1.9659817e-06, -60, -0.05, 15)
 
-[node name="road-straight7" parent="." unique_id=1889543185 groups=["road"] instance=ExtResource("1_6kmoe")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, -0.05, 0)
+[node name="road-end2" parent="." unique_id=617539980 instance=ExtResource("2_6kmoe")]
+transform = Transform3D(-15, 0, -1.3113416e-06, 0, 15, 0, 1.3113416e-06, 0, -15, -7.694, -0.05, -7.434)
+
+[node name="FinishZone" type="Area3D" parent="road-end2" unique_id=1940732300 groups=["finish_line"]]
+transform = Transform3D(-0.9999998, 1.5258142e-10, 8.742262e-08, 0, 0.99999833, -0.0017453278, -8.7422755e-08, -0.0017453281, -0.9999982, 0.111, -0.079, -0.477)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-end2/FinishZone" unique_id=1979850187]
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, 0, 0, -0.418)
+shape = SubResource("BoxShape3D_dm6ti")
 
 [node name="road-straight8" parent="." unique_id=1020900528 groups=["road"] instance=ExtResource("1_6kmoe")]
 transform = Transform3D(-14.999999, 1.1368684e-13, 1.3113417e-06, -5.684342e-14, 14.999999, -1.3113414e-06, -1.3113416e-06, -1.3113415e-06, -14.999999, -45, -0.05, 45)

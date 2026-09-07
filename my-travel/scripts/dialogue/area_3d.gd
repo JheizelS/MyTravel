@@ -1,29 +1,33 @@
 extends Area3D
- 
 @export var speaker_name: String = "Welcome to MyTravel!"
-@export var dialogue_text: String = "To firstly introduce you to the NZ roads, we drive on the left." + " Keep to the left side of the road."
+@export var dialogue_text: String = "In New Zealand, you drive on the left side of the road. Keep left and reach a score of 25 to complete this lesson."
 @export var trigger_once: bool = true
- 
+@export var lesson_intro: Node  # drag your LessonIntro node in here
+
 var _has_triggered: bool = false
- 
- 
+var _waiting_for_continue: bool = false
+
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
- 
- 
+
+
 func _on_body_entered(body: Node3D) -> void:
 	if body.name != "Player":
 		return
 	if trigger_once and _has_triggered:
 		return
- 
+
 	_has_triggered = true
-	DialogueBox.show_dialogue(speaker_name, dialogue_text, "intro")
- 
- 
-func _on_body_exited(body: Node3D) -> void:
-	if body.name != "Player":
+	_waiting_for_continue = true
+	DialogueBox.show_dialogue(speaker_name, dialogue_text + "\n\n(Click to continue)", "intro")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _waiting_for_continue:
 		return
- 
-	DialogueBox.hide_dialogue("intro")
+	if event is InputEventMouseButton and event.pressed or event.is_action_pressed("ui_accept"):
+		_waiting_for_continue = false
+		DialogueBox.hide_dialogue("intro")
+		if lesson_intro:
+			lesson_intro.start_sequence()

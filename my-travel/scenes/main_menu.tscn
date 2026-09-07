@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd2fhfp4b1cpx"]
 
 [ext_resource type="PackedScene" uid="uid://ci0c62yydrvd4" path="res://scenes/spinning_wheel.tscn" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://bu5k5oft1g8nb" path="res://scripts/main_menu.gd" id="1_rtw2f"]
+[ext_resource type="Script" uid="uid://bu5k5oft1g8nb" path="res://scripts/UI/main_menu.gd" id="1_rtw2f"]
 [ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/NationalPark-Bold.ttf" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://0y50hri0q44p" path="res://assets/fonts/NationalPark-Light.ttf" id="3_wu84c"]
 [ext_resource type="FontFile" uid="uid://dgpxxeiy50gvv" path="res://assets/fonts/NationalPark-ExtraBold.ttf" id="4_8ln24"]
@@ -12,8 +12,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rtw2f")
@@ -23,10 +21,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1112.0
-offset_bottom = 608.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=267021259]
 handle_input_locally = false

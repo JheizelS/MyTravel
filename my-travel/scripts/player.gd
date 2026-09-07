@@ -20,13 +20,17 @@ const MAX_PAN_ANGLE = 50.0
 @onready var engine_start_sound: AudioStreamPlayer3D = $EngineStart
 @onready var engine_idle_sound: AudioStreamPlayer3D = $EngineIdle
 @onready var wrong_lane_detector: Area3D = $WrongLaneDetector
+@onready var finish_detector: Area3D = $FinishDetector
 
 
 @export var min_angle: float = 0.0
 @export var max_angle: float = 264.0
 @export var max_speed: float = 160.0
+@export var target_score := 25
+@export var speeding_threshold_kmh: float = 50.0
+@export var speeding_warning_delay: float = 5.0
 
-
+var _lesson_complete := false
 var headlights_on = false
 var reverse_mode := false
 var camera_yaw := 0.0  # horizontal pan offset from car's heading
@@ -34,6 +38,8 @@ var engine_running = false
 var _off_road_warned := false 
 var _off_road_check_enabled := false
 var _in_wrong_lane := false
+var speeding_timer: float = 0.0
+var speeding_warning_active: bool = false
  
 # 0-100 timer
 var timing := false
@@ -68,6 +74,7 @@ func _ready():
 	await get_tree().create_timer(1.5).timeout
 	_off_road_check_enabled = true
  
+	finish_detector.area_entered.connect(_on_finish_detector_area_entered)
  
 func _input(event):
 	
@@ -90,17 +97,21 @@ func _input(event):
 		headlights_on = !headlights_on
 		headlight_left.visible = headlights_on
 		headlight_right.visible = headlights_on
-
- 
+	if event.is_action_pressed("retry_lesson") and _lesson_complete and ScoreManager.score < ScoreManager.target_score:
+		ScoreManager.reset_score()
+		get_tree().reload_current_scene()
  
 func _physics_process(delta):
 	_check_camera_switch() 
 
 	_check_off_road()
 	_check_wrong_lane()
+	_check_speeding(delta)
 	# Speed-scaled steering return rate (recalculated every frame)
 	var speed_kmh = linear_velocity.length() * 3.6
 	var return_rate = lerp(1.0, 3.5, clamp(speed_kmh / 100.0, 0.0, 1.0))
+	
+	ScoreManager.set_speed(speed_kmh) 
 	
 	# Speedometer -> Needle rotation
 	var ratio = clamp(speed_kmh / max_speed, 0.0, 1.0)
@@ -165,7 +176,7 @@ func _check_camera_switch():
 		reverse_camera.current = false
 
 func _check_off_road():
-	if not _off_road_check_enabled:
+	if not _off_road_check_enabled or _lesson_complete:
 		return
 
 	var on_road_count := 0
@@ -177,14 +188,19 @@ func _check_off_road():
 	if on_road_count <= 1 and not _off_road_warned:
 		_off_road_warned = true
 		DialogueBox.show_dialogue("Instructor", "You've left the road — head back to the lane.", "off_road")
+		ScoreManager.set_off_road(true)
 	elif on_road_count >= 3 and _off_road_warned:
 		_off_road_warned = false
 		DialogueBox.hide_dialogue("off_road")
+		ScoreManager.set_off_road(false)
 		
 		
 func _check_wrong_lane():
+	if _lesson_complete:
+		return
+		
 	var overlapping_areas = wrong_lane_detector.get_overlapping_areas()
-	print("Overlapping areas: ", overlapping_areas)
+	#print("Overlapping areas: ", overlapping_areas) debugger line
 	var in_wrong_lane_now := false
  
 	for area in overlapping_areas:
@@ -195,6 +211,33 @@ func _check_wrong_lane():
 	if in_wrong_lane_now and not _in_wrong_lane:
 		_in_wrong_lane = true
 		DialogueBox.show_dialogue("Instructor", "You're on the wrong side of the road — move back to the left lane.", "wrong_lane")
+		ScoreManager.set_wrong_lane(true)
 	elif not in_wrong_lane_now and _in_wrong_lane:
 		_in_wrong_lane = false
 		DialogueBox.hide_dialogue("wrong_lane")
+		ScoreManager.set_wrong_lane(false)
+
+
+func _on_finish_detector_area_entered(area: Area3D) -> void:
+	if area.is_in_group("finish_line") and not _lesson_complete:
+		_lesson_complete = true
+		ScoreManager.freeze_scoring()
+		if ScoreManager.score >= ScoreManager.target_score:
+			DialogueBox.show_dialogue("Instructor:", "Lesson complete! Final score: %d" % ScoreManager.score, "lesson_complete")
+		else:
+			DialogueBox.show_dialogue("Instructor:", "Score: %d / %d — not quite. Press R to try again." % [ScoreManager.score, ScoreManager.target_score], "lesson_failed")
+
+func _check_speeding(delta: float) -> void:
+	var speed_kmh = linear_velocity.length() * 3.6
+	if speed_kmh > speeding_threshold_kmh:
+		speeding_timer += delta
+		if speeding_timer >= speeding_warning_delay and not speeding_warning_active:
+			speeding_warning_active = true
+			ScoreManager.set_speeding(true)
+			DialogueBox.show_dialogue("Instructor:", "Slow down! You're over the speed limit.", "speeding_warning")
+	else:
+		speeding_timer = 0.0
+		if speeding_warning_active:
+			speeding_warning_active = false
+			ScoreManager.set_speeding(false)
+			DialogueBox.hide_dialogue("speeding_warning")

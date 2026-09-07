@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bl7owpjou6btv" path="res://scenes/terrain.tscn" id="3_4nkto"]
 [ext_resource type="PackedScene" uid="uid://cu0eq5ophqhnv" path="res://scenes/weather_cycle.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://btft6ul4h33n1" path="res://scenes/player.tscn" id="4_fcfvj"]
-[ext_resource type="Script" uid="uid://cvcnc7j0nejwf" path="res://scripts/barrier.gd" id="5_4nkto"]
+[ext_resource type="Script" uid="uid://cvcnc7j0nejwf" path="res://scripts/systems/barrier.gd" id="5_4nkto"]
 [ext_resource type="Script" uid="uid://cn1fk4rjnngfs" path="res://scripts/dialogue/area_3d.gd" id="6_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://wbma48au5pl4" path="res://assets/models/road_source/signs/speed_limit.tscn" id="7_pa8r4"]
+[ext_resource type="Script" uid="uid://dmekqrp4eq0n6" path="res://scripts/lesson.gd" id="8_15mv3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0br7"]
 albedo_color = Color(0.053080797, 0.35290337, 0.15272775, 1)
@@ -19,10 +21,7 @@ size = Vector3(3.3532486, 2.182129, 5.521759)
 [node name="Level1" type="Node3D" unique_id=417963903]
 
 [node name="Player" parent="." unique_id=1174374341 instance=ExtResource("4_fcfvj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.1232953, 0.88028383, -9.991613)
-min_angle = null
-max_angle = null
-max_speed = null
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8339624, 2.712875, -9.425255)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=880408311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4999695, -0.5, 40)
@@ -48,15 +47,20 @@ shape = SubResource("BoxShape3D_dm6ti")
 [node name="RespawnPoint" type="Marker3D" parent="." unique_id=717415876]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.995028, 1, -9.991613)
 
-[node name="IntroTrigger" type="Area3D" parent="." unique_id=430246438]
+[node name="IntroTrigger" type="Area3D" parent="." unique_id=430246438 node_paths=PackedStringArray("lesson_intro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.995028, 1, -9.991613)
 script = ExtResource("6_fcfvj")
-speaker_name = null
-dialogue_text = null
-trigger_once = null
+lesson_intro = NodePath("../Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IntroTrigger" unique_id=911455501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6069903, 0.59106445, -0.09916687)
 shape = SubResource("BoxShape3D_rsrjh")
+
+[node name="speed_limit_sign" parent="." unique_id=900438424 instance=ExtResource("7_pa8r4")]
+transform = Transform3D(-0.99, 0, -1.4948584e-07, 0, 0.99, 0, 1.4948584e-07, 0, -0.99, 18.123, 0.25, -14.238)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=654948612 node_paths=PackedStringArray("player")]
+script = ExtResource("8_15mv3")
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="Barrier" to="Barrier" method="_on_body_entered"]

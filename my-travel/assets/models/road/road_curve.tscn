@@ -20,11 +20,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 material_override = SubResource("StandardMaterial3D_xe838")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=17582360]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1860430503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 shape = SubResource("ConvexPolygonShape3D_da30e")
 
 [node name="WrongLaneZone" type="Area3D" parent="." index="2" unique_id=1422382206 groups=["WrongLaneZone"]]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WrongLaneZone" index="0" unique_id=1552814758]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.4630797, -0.0011786141, -1.1830214)

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://vihsdk0d1dpx"]
+
+[ext_resource type="PackedScene" uid="uid://bv06gg050nq7w" path="res://assets/models/road_source/new/road-end.glb" id="1_y23vh"]
+[ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/road_textures.png" id="2_dakhg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r25fv"]
+albedo_texture = ExtResource("2_dakhg")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y23vh"]
+points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.02, -0.5, 0.5, 0, -0.5, -0.5, 0.02, 0.5, 0.5, 0, 0.5, 0.5, 0.02, -0.5, 0.5, 0.02, 0.5)
+
+[node name="road-end" unique_id=617539980 instance=ExtResource("1_y23vh")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 7.415, 0, -7.56)
+
+[node name="road-end" parent="." index="0" unique_id=215458663]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.005645506, -4.8828122e-05, 0.0041378736)
+material_override = SubResource("StandardMaterial3D_r25fv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1024688084]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.005645506, -4.8828122e-05, 0.0041378736)
+shape = SubResource("ConvexPolygonShape3D_y23vh")
