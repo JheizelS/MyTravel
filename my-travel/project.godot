@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MyTravel"
-run/main_scene="uid://chpuxe4bl8jj2"
+run/main_scene="uid://cw11riyrhiesl"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
@@ -24,7 +24,7 @@ ScoreManager="*uid://bmsjt374cp5vr"
 
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [input]
 
