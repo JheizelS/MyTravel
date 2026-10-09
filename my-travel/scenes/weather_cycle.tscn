@@ -336,9 +336,6 @@ noise = SubResource("FastNoiseLite_n0dgk")
 seamless = true
 seamless_blend_skirt = 0.445
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cxwjl"]
-load_path = "res://.godot/imported/shooting_star_sampler.png-e89c930f09c56eb68c26bbc1744f6aea.s3tc.ctex"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4kuhj"]
 shader = ExtResource("1_w4dvy")
 shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_fxc0c")
@@ -361,9 +358,6 @@ shader_parameter/astro_sampler = ExtResource("2_ak4p5")
 shader_parameter/astro_scale = 10.0
 shader_parameter/astro_intensity = 1.0
 shader_parameter/stars_intensity = 1.5000000223518
-shader_parameter/shooting_stars_intensity = 0.5000000074506
-shader_parameter/shooting_star_sampler = SubResource("CompressedTexture2D_cxwjl")
-shader_parameter/shooting_star_tint = Color(1, 0.6627451, 0.41960785, 1)
 
 [sub_resource type="Sky" id="Sky_unm2k"]
 sky_material = SubResource("ShaderMaterial_4kuhj")
@@ -385,7 +379,7 @@ root_node = NodePath("../WorldEnvironment")
 libraries/ = SubResource("AnimationLibrary_y1nht")
 autoplay = &"weather cycle"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=756382539]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=756382539 groups=["world_environment"]]
 environment = SubResource("Environment_sj4y7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=659517303]

@@ -12,7 +12,7 @@ points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.02, -0.5, 0.5, 
 [node name="road-end" unique_id=617539980 instance=ExtResource("1_y23vh")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 7.415, 0, -7.56)
 
-[node name="road-end" parent="." index="0" unique_id=215458663]
+[node name="road-end" parent="." index="0" unique_id=1634350391]
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.005645506, -4.8828122e-05, 0.0041378736)
 material_override = SubResource("StandardMaterial3D_r25fv")
 

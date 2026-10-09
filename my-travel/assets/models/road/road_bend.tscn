@@ -18,6 +18,16 @@ radius = 0.1187837
 [sub_resource type="SphereShape3D" id="SphereShape3D_dx3dy"]
 radius = 0.12679315
 
+[sub_resource type="Curve3D" id="Curve3D_q26yr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0645881, 0.01957194, -0.5151252, 0, 0, 0, 0, 0, 0, -0.0018838719, 0.01957194, -0.5151252, 0, 0, 0, 0, 0, 0, 0.06704292, 0.01957194, -0.49885085, 0, 0, 0, 0, 0, 0, 0.12783249, 0.01957194, -0.47922587, 0, 0, 0, 0, 0, 0, 0.1895794, 0.01957194, -0.44763443, 0, 0, 0, 0, 0, 0, 0.24271044, 0.01957194, -0.4136497, 0, 0, 0, 0, 0, 0, 0.30144948, 0.01957194, -0.36843783, 0, 0, 0, 0, 0, 0, 0.34481955, 0.01957194, -0.30698678, 0, 0, 0, 0, 0, 0, 0.3883775, 0.01957194, -0.25146243, 0, 0, 0, 0, 0, 0, 0.4121823, 0.01957194, -0.19411933, 0, 0, 0, 0, 0, 0, 0.43420058, 0.01957194, -0.13045777, 0, 0, 0, 0, 0, 0, 0.44425237, 0.01957194, -0.077326715, 0, 0, 0, 0, 0, 0, 0.4473055, 0.01957194, -0.029593265, 0, 0, 0, 0, 0, 0, 0.44996667, 0.01957194, -0.00032068446),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q26yr"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="road_bend" unique_id=902432348 instance=ExtResource("1_q26yr")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 1, 0, 0)
 
@@ -42,3 +52,22 @@ shape = SubResource("SphereShape3D_q26yr")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="WrongLaneZone" index="2" unique_id=506729397]
 transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0.31, 0.001, -0.092)
 shape = SubResource("SphereShape3D_dx3dy")
+
+[node name="Path3D" type="Path3D" parent="." index="3" unique_id=1452424040]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.01, 0)
+curve = SubResource("Curve3D_q26yr")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" index="0" unique_id=1169691229]
+polygon = PackedVector2Array(-0.01, 0, -0.01, 0.005, 0.01, 0.005, 0.01, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_q26yr")

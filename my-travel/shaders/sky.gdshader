@@ -1,5 +1,4 @@
 shader_type sky;
-render_mode use_half_res_pass;
 
 group_uniforms clouds;
 
@@ -37,12 +36,6 @@ uniform float astro_intensity : hint_range(1.0, 3.0, 0.1) = 1.0;
 group_uniforms stars;
 
 uniform float stars_intensity : hint_range(0.0, 5.0, 0.1) = 0.0;
-
-group_uniforms shooting_stars;
-
-uniform float shooting_stars_intensity : hint_range(0.0, 10.0, 0.1) = 0.0;
-uniform sampler2D shooting_star_sampler : filter_linear, repeat_disable;
-uniform vec3 shooting_star_tint : source_color;
 
 float rand(float n){return fract(sin(n) * 43758.5453123);}
 
@@ -132,42 +125,6 @@ vec2 cloud_ray_march(vec3 direction, vec3 sun_direction){
 	return vec2(clamp(density, 0.0, 1.0), light / float(shadow_sample * clouds_samples));
 }
 
-vec3 random_direction(float seed){
-	float phi = rand(seed) * PI;
-	float costheta = rand(seed + 100.0) * 2.0 - 1.0;
-	float theta = acos(costheta);
-	return vec3( sin(theta) * cos(phi), (theta) * sin(phi), cos(theta) );
-}
-
-float get_shooting_star(vec3 eyedir){
-	float shooting_star = 0.0;
-	for(int i = 0; i < 4; i++){
-		float base_rand = rand(float(i));
-		float time = TIME + base_rand * 2.0;
-		float duration = 0.5 + base_rand;
-		float seed = floor(time / duration) * duration + base_rand;
-		float progress = mod(time, duration) / duration;
-		float rand_value = rand(seed + 100.0);
-		float rand_scale = base_rand * 10.0;
-		float a = rand_value * 0.8;
-		mat3 angle = mat3(vec3(cos(a), -sin(a), 0.0), vec3(sin(a), cos(a), 0.0), vec3(0.0, 0.0, 1.0));
-		vec3 shooting_dir = direction_to_matrix(random_direction(seed)) * angle * eyedir;
-		vec2 shooting_uv = ((shooting_dir.xy + vec2(0.0, progress * 0.4)) * (8.0 + rand_scale)) + vec2(0.5);
-
-		float shooting_mask = ceil(
-			clamp(shooting_uv.x * (1.0 - shooting_uv.x), 0.0, 1.0) *
-			clamp(shooting_uv.y * (1.0 - shooting_uv.y), 0.0, 1.0)
-			) * ceil(shooting_dir.z);
-			
-		shooting_star = clamp(
-			shooting_star + texture(shooting_star_sampler, shooting_uv).x
-			* sin(progress * PI)
-			* shooting_mask * rand_value,
-		0.0, 1.0);
-	}
-	return clamp(shooting_star, 0.0, 1.0);
-}
-
 void sky() {
 	
 	float horizon_mask = abs(EYEDIR.y);
@@ -194,12 +151,6 @@ void sky() {
 		sky_color += smoothstep(0.025 + ((1.0 + sin(TIME + stars.y)) / 2.0) * 0.05, 0.0, stars.x) * stars_intensity;
 	}
 	
-	// Add shooting stars
-	
-	if(shooting_stars_intensity > 0.0){
-		sky_color += get_shooting_star(EYEDIR) * shooting_stars_intensity * shooting_star_tint;
-	}
-	
 	// Add astro
 	
 	sky_color = mix(sky_color, astro_color.rgb * astro_intensity * astro_tint, astro_color.a * astro_mask * bottom_mask);
@@ -212,15 +163,12 @@ void sky() {
 		sky_color = mix(sky_color, clouds_light_color, smoothstep(0.0, 1.0, high_clouds_mask) * horizon_mask * bottom_mask * high_clouds_density);
 	}
 	
-	// clouds
-	if (AT_HALF_RES_PASS) {
-		vec3 clouds_direction = vec3(EYEDIR.xz / clamp(EYEDIR.y, 0.0, 1.0), 1.0);
-		vec2 clouds = EYEDIR.y > 0.0 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
-		
-		COLOR = mix(bottom_color, clouds_light_color, exp(-clouds.y * clouds_shadow_intensity));
-		ALPHA = (1.0 - exp(-clouds.x * horizon_mask * bottom_mask * 10.0));
-		
-	}else{
-		COLOR.rgb = mix(sky_color, HALF_RES_COLOR.rgb, HALF_RES_COLOR.a);
-	}
+	// Clouds (full resolution — no half-res pass)
+	
+	vec3 clouds_direction = vec3(EYEDIR.xz / clamp(EYEDIR.y, 0.0, 1.0), 1.0);
+	vec2 clouds = EYEDIR.y > 0.0 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
+	vec3 cloud_color = mix(bottom_color, clouds_light_color, exp(-clouds.y * clouds_shadow_intensity));
+	float cloud_alpha = (1.0 - exp(-clouds.x * horizon_mask * bottom_mask * 10.0));
+	
+	COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
 }

@@ -3,10 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="1_6kmoe"]
 [ext_resource type="PackedScene" uid="uid://vihsdk0d1dpx" path="res://assets/models/road/road_end.tscn" id="2_6kmoe"]
 [ext_resource type="PackedScene" uid="uid://ea1rrodiuno6" path="res://assets/models/road/road_curve.tscn" id="2_bk7bi"]
+[ext_resource type="Texture2D" uid="uid://b3aaok0yk3dx4" path="res://assets/models/road_source/signs/checker.png" id="3_bk7bi"]
 [ext_resource type="PackedScene" uid="uid://vrstv1uuhno0" path="res://assets/models/road/road_bend.tscn" id="5_bk7bi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dm6ti"]
-size = Vector3(0.001, 1, 1.8354492)
+size = Vector3(0.75, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5bnie"]
+size = Vector3(0.75, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4opwy"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.34901962)
+albedo_texture = ExtResource("3_bk7bi")
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dm6ti"]
 radius = 0.20164348
@@ -38,8 +50,13 @@ transform = Transform3D(-15, 0, -1.3113416e-06, 0, 15, 0, 1.3113416e-06, 0, -15,
 transform = Transform3D(-0.9999998, 1.5258142e-10, 8.742262e-08, 0, 0.99999833, -0.0017453278, -8.7422755e-08, -0.0017453281, -0.9999982, 0.111, -0.079, -0.477)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="road-end2/FinishZone" unique_id=1979850187]
-transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, 0, 0, -0.418)
+transform = Transform3D(0.99999857, -4.245744e-25, 2.1002633e-25, 0, 0.99999857, 9.313226e-10, 0, 0, 0.99999857, 0.058, 0.206, -0.5)
 shape = SubResource("BoxShape3D_dm6ti")
+
+[node name="FinishVisual" type="MeshInstance3D" parent="road-end2/FinishZone" unique_id=1622389300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.058, 0.206, -0.5)
+mesh = SubResource("BoxMesh_5bnie")
+surface_material_override/0 = SubResource("StandardMaterial3D_4opwy")
 
 [node name="road-straight8" parent="." unique_id=1020900528 groups=["road"] instance=ExtResource("1_6kmoe")]
 transform = Transform3D(-14.999999, 1.1368684e-13, 1.3113417e-06, -5.684342e-14, 14.999999, -1.3113414e-06, -1.3113416e-06, -1.3113415e-06, -14.999999, -45, -0.05, 45)
@@ -68,86 +85,86 @@ transform = Transform3D(-6.556708e-07, 0, -15, 0, 15, 0, 15, 0, -6.556708e-07, 7
 [node name="road-curve-outer" parent="." unique_id=750145496 groups=["road"] instance=ExtResource("2_bk7bi")]
 transform = Transform3D(1.1324682e-06, 6.5567053e-07, 14.999999, -6.5567076e-07, 14.999999, -6.5567053e-07, -14.999999, -6.556708e-07, 1.1324682e-06, 75, -0.05, 60)
 
-[node name="CollisionShape3D" parent="road-curve-outer" index="1" unique_id=17582360]
+[node name="CollisionShape3D" parent="road-curve-outer" index="1" unique_id=1860430503]
 visible = false
 
-[node name="WrongLaneZone" parent="road-curve-outer" index="2" unique_id=1422382206]
-visible = false
-
-[node name="CollisionShape3D" parent="road-curve-outer/WrongLaneZone" index="0" unique_id=1552814758]
+[node name="CollisionShape3D" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="0" unique_id=1552814758]
 transform = Transform3D(0.9999999, 0, -1.4210855e-14, 0, 0.9999999, 2.5259666e-16, 1.4210855e-14, 2.5259645e-16, 0.9999999, -0.97332335, -0.0011786008, -1.3664966)
 
-[node name="CollisionShape3D3" parent="road-curve-outer/WrongLaneZone" index="1" unique_id=1562603491]
+[node name="CollisionShape3D3" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="1" unique_id=1562603491]
 transform = Transform3D(0.9999998, -7.1054274e-15, -1.4210855e-14, 0, 0.9999998, 2.5259708e-16, 1.4210855e-14, 2.5259708e-16, 0.9999998, -0.6614604, -0.00092288706, -1.0625117)
 
-[node name="CollisionShape3D4" parent="road-curve-outer/WrongLaneZone" index="2" unique_id=742446870]
+[node name="CollisionShape3D4" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="2" unique_id=742446870]
 transform = Transform3D(0.9999995, 0, -2.1316282e-14, -7.1054274e-15, 0.9999995, -3.3001164e-15, 2.1316282e-14, 3.8053116e-15, 0.9999995, -0.31472492, -0.0006115421, -0.24398518)
 
-[node name="CollisionShape3D5" parent="road-curve-outer/WrongLaneZone" index="3" unique_id=1666442865]
+[node name="CollisionShape3D5" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="3" unique_id=1666442865]
 transform = Transform3D(0.99999976, -1.0658141e-14, -2.1316282e-14, 0, 0.99999976, 2.5259666e-16, 2.1316282e-14, 2.5259772e-16, 0.99999976, -0.43685484, -0.00071358593, -0.669147)
 
-[node name="CollisionShape3D2" parent="road-curve-outer/WrongLaneZone" index="4" unique_id=2080908332]
+[node name="CollisionShape3D2" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="4" unique_id=2080908332]
 transform = Transform3D(0.99999994, -1.7763568e-14, 0, 0, 0.99999994, 2.5259708e-16, 0, -1.7510971e-14, 0.99999994, -1.3351827, -0.0015078105, -1.574758)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer/WrongLaneZone" index="5" unique_id=1269617567]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer/WrongLaneZone" parent_id_path=PackedInt32Array(750145496, 1422382206) index="5" unique_id=1269617567]
 transform = Transform3D(0.99999994, -2.1316282e-14, 0, 0, 0.99999994, 2.5259708e-16, 0, -2.1063683e-14, 0.99999994, -1.7380171, -0.0015078329, -1.683294)
 shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="Path3D" parent="road-curve-outer" index="3" unique_id=1681548515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, -0.01, 0)
 
 [node name="road-curve-outer2" parent="." unique_id=191075114 groups=["road"] instance=ExtResource("2_bk7bi")]
 transform = Transform3D(14.999999, -6.556708e-07, 2.622683e-06, 6.5567065e-07, 14.999999, 6.556708e-07, -2.622683e-06, -6.5567076e-07, 14.999999, -0.14571762, -0.05, 75.01091)
 
-[node name="CollisionShape3D" parent="road-curve-outer2" index="1" unique_id=17582360]
+[node name="CollisionShape3D" parent="road-curve-outer2" index="1" unique_id=1860430503]
 visible = false
 
-[node name="WrongLaneZone" parent="road-curve-outer2" index="2" unique_id=1422382206]
-visible = false
-
-[node name="CollisionShape3D" parent="road-curve-outer2/WrongLaneZone" index="0" unique_id=1552814758]
+[node name="CollisionShape3D" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="0" unique_id=1552814758]
 transform = Transform3D(0.9999999, 5.3731366e-16, 0, 5.373128e-16, 0.9999999, 0, 0, 0, 0.9999999, -0.9700679, -0.001178629, -1.3345101)
 
-[node name="CollisionShape3D3" parent="road-curve-outer2/WrongLaneZone" index="1" unique_id=1562603491]
+[node name="CollisionShape3D3" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="1" unique_id=1562603491]
 transform = Transform3D(0.9999998, 5.3731196e-16, -2.842171e-14, -6.5681162e-15, 0.9999998, 0, 2.842171e-14, 7.1054274e-15, 0.9999998, -0.6477689, -0.0009229189, -1.0371563)
 
-[node name="CollisionShape3D4" parent="road-curve-outer2/WrongLaneZone" index="2" unique_id=742446870]
+[node name="CollisionShape3D4" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="2" unique_id=742446870]
 transform = Transform3D(0.9999996, -6.5681154e-15, 0, 5.3731027e-16, 0.9999996, 7.1054274e-15, 0, 0, 0.9999996, -0.2881407, -0.0006115783, -0.22424412)
 
-[node name="CollisionShape3D5" parent="road-curve-outer2/WrongLaneZone" index="3" unique_id=1666442865]
+[node name="CollisionShape3D5" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="3" unique_id=1666442865]
 transform = Transform3D(0.99999976, 5.3731196e-16, -2.842171e-14, -6.568117e-15, 0.99999976, 0, 2.842171e-14, 7.1054274e-15, 0.99999976, -0.41601467, -0.00071362057, -0.6518254)
 
-[node name="CollisionShape3D2" parent="road-curve-outer2/WrongLaneZone" index="4" unique_id=2080908332]
+[node name="CollisionShape3D2" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="4" unique_id=2080908332]
 transform = Transform3D(0.99999994, 5.373128e-16, -2.842171e-14, -6.5681154e-15, 0.99999994, 0, 2.842171e-14, 7.1054274e-15, 0.99999994, -1.3545537, -0.0015078328, -1.5793996)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer2/WrongLaneZone" index="5" unique_id=1441122892]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer2/WrongLaneZone" parent_id_path=PackedInt32Array(191075114, 1422382206) index="5" unique_id=1441122892]
 transform = Transform3D(0.99999994, 5.3731196e-16, -4.2632564e-14, -1.012083e-14, 0.99999994, 0, 4.2632564e-14, 1.0658141e-14, 0.99999994, -1.7742168, -0.00150781, -1.6828375)
 shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="Path3D" parent="road-curve-outer2" index="3" unique_id=1681548515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.01, 0.03)
 
 [node name="road-curve-outer3" parent="." unique_id=91891696 groups=["road"] instance=ExtResource("2_bk7bi")]
 transform = Transform3D(-14.999999, 5.7320536e-14, 1.3113414e-06, -5.7320536e-14, 14.999999, -1.3113414e-06, -1.3113414e-06, -1.3113414e-06, -14.999999, 60, -0.05, 15)
 
-[node name="CollisionShape3D" parent="road-curve-outer3" index="1" unique_id=17582360]
+[node name="CollisionShape3D" parent="road-curve-outer3" index="1" unique_id=1860430503]
 visible = false
 
-[node name="WrongLaneZone" parent="road-curve-outer3" index="2" unique_id=1422382206]
-visible = false
-
-[node name="CollisionShape3D" parent="road-curve-outer3/WrongLaneZone" index="0" unique_id=1552814758]
+[node name="CollisionShape3D" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="0" unique_id=1552814758]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.0356054, -0.0012750189, -1.4125224)
 
-[node name="CollisionShape3D3" parent="road-curve-outer3/WrongLaneZone" index="1" unique_id=1562603491]
+[node name="CollisionShape3D3" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="1" unique_id=1562603491]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, -0.697742, -0.0010505839, -1.117499)
 
-[node name="CollisionShape3D4" parent="road-curve-outer3/WrongLaneZone" index="2" unique_id=742446870]
+[node name="CollisionShape3D4" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="2" unique_id=742446870]
 transform = Transform3D(0.9999996, 0, -1.4210855e-14, 0, 0.9999996, -1.4210855e-14, 1.4210855e-14, 1.4210855e-14, 0.9999996, -0.32419205, -0.00084171793, -0.2703159)
 
-[node name="CollisionShape3D5" parent="road-curve-outer3/WrongLaneZone" index="3" unique_id=1666442865]
+[node name="CollisionShape3D5" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="3" unique_id=1666442865]
 transform = Transform3D(0.99999976, -1.6940659e-21, 0, -1.6940659e-21, 0.99999976, 0, 0, 0, 0.99999976, -0.4452567, -0.00089722703, -0.7268919)
 
-[node name="CollisionShape3D2" parent="road-curve-outer3/WrongLaneZone" index="4" unique_id=2080908332]
+[node name="CollisionShape3D2" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="4" unique_id=2080908332]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1.4300466, -0.0015201861, -1.6240665)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer3/WrongLaneZone" index="5" unique_id=1017927013]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="road-curve-outer3/WrongLaneZone" parent_id_path=PackedInt32Array(91891696, 1422382206) index="5" unique_id=1017927013]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1.8171854, -0.0014578862, -1.7022763)
 shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="Path3D" parent="road-curve-outer3" index="3" unique_id=1681548515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, -0.01, -0.007)
 
 [node name="road_bend2" parent="." unique_id=902432348 groups=["road"] instance=ExtResource("5_bk7bi")]
 transform = Transform3D(14.999999, 0, 1.1368684e-13, 5.684342e-14, 14.999999, 1.4234711e-13, 0, 2.8660275e-14, 14.999999, 90.960556, -0.05, 45.026222)

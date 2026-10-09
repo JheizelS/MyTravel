@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://claomq7064ttw"]
+
+[ext_resource type="Script" uid="uid://cshuj2gsfw1gb" path="res://scripts/UI/off_road_indicator.gd" id="1_figd3"]
+[ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="2_xp0tx"]
+[ext_resource type="Texture2D" uid="uid://c1nv7lb31liwx" path="res://assets/UI/keep-left-sign.png" id="3_cmhmt"]
+
+[node name="OffRoadPopup" type="CanvasLayer" unique_id=306517101]
+script = ExtResource("1_figd3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=430701787]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 348.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=533564127]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xp0tx")
+theme_override_font_sizes/font_size = 30
+text = "RETURN TO LANE"
+horizontal_alignment = 1
+
+[node name="Sign" type="TextureRect" parent="VBoxContainer" unique_id=222096773]
+modulate = Color(1, 1, 1, 0.53333336)
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture = ExtResource("3_cmhmt")
+stretch_mode = 5

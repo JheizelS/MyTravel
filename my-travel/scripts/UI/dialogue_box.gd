@@ -11,6 +11,7 @@ var current_owner: String = ""
 func _ready() -> void:
 	panel.visible = false
 
+
 func show_dialogue(speaker: String, text: String, owner_id: String = "") -> void:
 	if PauseMenu.is_paused:
 		return
@@ -18,6 +19,7 @@ func show_dialogue(speaker: String, text: String, owner_id: String = "") -> void
 	dialogue_label.text = text
 	panel.visible = true
 	current_owner = owner_id
+
 
 func hide_dialogue(owner_id: String = "") -> void:
 	if owner_id != "" and owner_id != current_owner:

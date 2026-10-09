@@ -1,6 +1,8 @@
 extends Area3D
+
+
 @export var speaker_name: String = "Welcome to MyTravel!"
-@export var dialogue_text: String = "In New Zealand, you drive on the left side of the road. Keep left and reach a score of 25 to complete this lesson."
+@export var dialogue_text: String = "In New Zealand, you drive on the left side of the road. Keep to the left side of the road, and stay under the speed limit (or you start to lose points!) and reach a score of 25 at the end of the lap to complete this lesson."
 @export var trigger_once: bool = true
 @export var lesson_intro: Node  # drag your LessonIntro node in here
 

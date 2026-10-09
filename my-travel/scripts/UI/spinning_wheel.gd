@@ -1,4 +1,6 @@
 extends Node2D
+
+
 @export var spin_speed: float = 3.2
 var angle: float = 0.0
 
@@ -16,6 +18,7 @@ const HUB_DARK      = Color(0.10, 0.10, 0.10)
 func _process(delta: float) -> void:
 	angle += spin_speed * delta
 	queue_redraw()
+
 
 func _draw() -> void:
 	var r = 280.0

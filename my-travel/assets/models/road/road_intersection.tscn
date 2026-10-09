@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://k3rr7esqu7wm"]
+
+[ext_resource type="PackedScene" uid="uid://bqudjlgapudoe" path="res://assets/models/road_source/road-intersection.glb" id="1_rqt64"]
+[ext_resource type="Texture2D" uid="uid://cyrra2mg5xa0g" path="res://assets/models/road/road_textures2.png" id="1_vy66v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqt64"]
+albedo_texture = ExtResource("1_vy66v")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vfhmb"]
+points = PackedVector3Array(0.5, 0.02, 0.49990225, -0.5, 0.02, 0.49990225, 0.5, 0, 0.49990225, 0.5, 0.02, -0.5, -0.5, 0, 0.49990225, -0.5, 0.02, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5)
+
+[node name="road-intersection" unique_id=1343885257 instance=ExtResource("1_rqt64")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="road-intersection" parent="." index="0" unique_id=2001062160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+material_override = SubResource("StandardMaterial3D_rqt64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1004334370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+shape = SubResource("ConvexPolygonShape3D_vfhmb")

@@ -6,7 +6,7 @@ extends Control
 @onready var title_label: Label = $ColorRect/MarginContainer/VBoxContainer/Title
 @onready var body_label: Label = $ColorRect/MarginContainer/VBoxContainer/Warning
 @onready var hint_label: Label = $ColorRect/MarginContainer/VBoxContainer/ContinueInstructions
-@onready var agree_label: Label = $ColorRect/MarginContainer2/VBoxContainer2/Label
+@onready var agree_label: Label = $ColorRect/MarginContainer2/VBoxContainer2/ContinueWarning
 
 func _ready():
 	title_label.text = tr("disclaimer_title")

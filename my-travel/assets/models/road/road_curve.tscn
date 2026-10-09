@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bunth8s4kxa5" path="res://assets/models/road_source/road-curve-mesh.glb" id="1_da30e"]
 [ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/road_textures.png" id="2_bviwc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe838"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_da30e"]
 albedo_texture = ExtResource("2_bviwc")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_da30e"]
@@ -12,12 +12,22 @@ points = PackedVector3Array(-1, 0, -1, -1, 0, -0.00019574165, -1, 0.02, -1, -0.7
 [sub_resource type="SphereShape3D" id="SphereShape3D_dm6ti"]
 radius = 0.20164348
 
+[sub_resource type="Curve3D" id="Curve3D_da30e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.0027843, 0.030032419, -1.5111828, 0, 0, 0, 0, 0, 0, -1.7479054, 0.029992005, -1.4958706, 0, 0, 0, 0, 0, 0, -1.558895, 0.029991996, -1.454329, 0, 0, 0, 0, 0, 0, -1.3704374, 0.03000012, -1.3851519, 0, 0, 0, 0, 0, 0, -1.1961454, 0.029991971, -1.2919152, 0, 0, 0, 0, 0, 0, -1.0780768, 0.02998362, -1.2016859, 0, 0, 0, 0, 0, 0, -0.91191626, 0.029991768, -1.0634742, 0, 0, 0, 0, 0, 0, -0.80136764, 0.02999992, -0.91937876, 0, 0, 0, 0, 0, 0, -0.67694545, 0.029983789, -0.7590847, 0, 0, 0, 0, 0, 0, -0.5986919, 0.019995116, -0.5826049, 0, 0, 0, 0, 0, 0, -0.53633714, 0.019995116, -0.3947196, 0, 0, 0, 0, 0, 0, -0.4964078, 0.019995116, -0.20355521, 0, 0, 0, 0, 0, 0, -0.4825616, 0.029991861, 0.010026395),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bnie"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="road-curve2" unique_id=1366952744 instance=ExtResource("1_da30e")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
 [node name="road-curve" parent="." index="0" unique_id=1024767036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-material_override = SubResource("StandardMaterial3D_xe838")
+material_override = SubResource("StandardMaterial3D_da30e")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1860430503]
@@ -25,7 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 shape = SubResource("ConvexPolygonShape3D_da30e")
 
 [node name="WrongLaneZone" type="Area3D" parent="." index="2" unique_id=1422382206 groups=["WrongLaneZone"]]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WrongLaneZone" index="0" unique_id=1552814758]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -1.4630797, -0.0011786141, -1.1830214)
@@ -46,3 +55,22 @@ shape = SubResource("SphereShape3D_dm6ti")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="WrongLaneZone" index="4" unique_id=2080908332]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1.8771192, -0.0015078225, -1.2890083)
 shape = SubResource("SphereShape3D_dm6ti")
+
+[node name="Path3D" type="Path3D" parent="." index="3" unique_id=1681548515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.007)
+curve = SubResource("Curve3D_da30e")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D" index="0" unique_id=1497184096]
+polygon = PackedVector2Array(-0.01, 0, -0.01, 0.005, 0.01, 0.005, 0.01, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_5bnie")

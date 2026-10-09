@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://csi5441tcat6j"]
+
+[ext_resource type="PackedScene" uid="uid://kh7x3eo5u5nu" path="res://assets/models/road/road_straight.tscn" id="1_8byos"]
+[ext_resource type="PackedScene" uid="uid://b1whvyym3425e" path="res://assets/models/road_source/signs/stop_sign.tscn" id="2_s3tni"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5ple"]
+albedo_color = Color(0.8784314, 1, 0.07058824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5bnie"]
+material = SubResource("StandardMaterial3D_f5ple")
+size = Vector3(0.03, 0.01, 0.4)
+
+[node name="road_straight_giveaway" unique_id=247150468 instance=ExtResource("1_8byos")]
+
+[node name="GiveawayLine" type="MeshInstance3D" parent="." index="3" unique_id=163626307]
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, -0.025, 0.01, -0.705)
+mesh = SubResource("BoxMesh_5bnie")
+
+[node name="stop_sign" parent="." index="4" unique_id=1008618006 instance=ExtResource("2_s3tni")]
+transform = Transform3D(-0.06666666, 0, -5.8281846e-09, 0, 0.06666666, 0, 5.8281846e-09, 0, -0.06666666, -0.06441014, 0.019999947, -0.9553195)

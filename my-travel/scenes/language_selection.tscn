@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/NationalPark-Bold.ttf" id="1_7lbvh"]
 [ext_resource type="Script" uid="uid://1uiykygric0s" path="res://scripts/localisation/language_selection.gd" id="1_a2piv"]
+[ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="3_6kr18"]
 
 [sub_resource type="Theme" id="Theme_dm6ti"]
 
@@ -50,32 +51,38 @@ columns = 3
 
 [node name="EnglishButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1686451196]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "English"
 
 [node name="MaoriButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=912321556]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "Māori"
 
 [node name="ChineseButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=661857256]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "中文"
 
 [node name="HindiButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1950804148]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "हिन्दी"
 
 [node name="KoreanButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=499526551]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "한국어"
 
 [node name="FilipinoButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer" unique_id=1968873885]
 layout_mode = 2
 theme = SubResource("Theme_dm6ti")
+theme_override_fonts/font = ExtResource("3_6kr18")
 theme_override_font_sizes/font_size = 50
 text = "Filipino"
 

@@ -21,7 +21,7 @@ size = Vector3(3.3532486, 2.182129, 5.521759)
 [node name="Level1" type="Node3D" unique_id=417963903]
 
 [node name="Player" parent="." unique_id=1174374341 instance=ExtResource("4_fcfvj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8339624, 2.712875, -9.425255)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.834, 1.054121, -9.416)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=880408311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4999695, -0.5, 40)
@@ -30,13 +30,14 @@ size = Vector3(225, 1, 150)
 material = SubResource("StandardMaterial3D_y0br7")
 
 [node name="road" parent="." unique_id=276819400 instance=ExtResource("2_5xbjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045, 0)
 
 [node name="terrain" parent="." unique_id=705957025 instance=ExtResource("3_4nkto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12826753, -0.11971617, 0)
 
 [node name="WeatherCycle" parent="." unique_id=1999789285 instance=ExtResource("4_5xbjy")]
 
-[node name="Barrier" type="Area3D" parent="." unique_id=1164608435 node_paths=PackedStringArray("respawn_point")]
+[node name="Barrier" type="Area3D" parent="." unique_id=1164608435 node_paths=PackedStringArray("respawn_point") groups=["respawn_trigger"]]
 script = ExtResource("5_4nkto")
 respawn_point = NodePath("../RespawnPoint")
 
