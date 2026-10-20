@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MyTravel"
-run/main_scene="uid://bd2fhfp4b1cpx"
+run/main_scene="uid://cw11riyrhiesl"
 config/features=PackedStringArray("4.7", "Mobile")
 
 [autoload]
@@ -26,12 +26,17 @@ SlowPopup="*uid://bjk0lgutamyj5"
 WrongLanePopup="*uid://dy6evlebo5sbl"
 OffRoadIndicator="*uid://claomq7064ttw"
 StuckIndicator="*uid://cip3fa153sd4k"
+AssistSettings="*uid://b6nbeqo3fj0fm"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
 window/vsync/vsync_mode=0
+
+[gui]
+
+theme/custom_font="uid://7bvxe6d2q5rc"
 
 [input]
 

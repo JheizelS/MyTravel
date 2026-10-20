@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var dark := Color(0.6, 0.35, 0.0)
 @export var bright := Color(1.0, 0.7, 0.1)
 
-@onready var title: Label = $VBoxContainer/Title
+@onready var title: Label = $VBoxContainer/StuckLabelTitle
 
 var _pulse: Tween
 

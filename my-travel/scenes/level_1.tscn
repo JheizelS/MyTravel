@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cn1fk4rjnngfs" path="res://scripts/dialogue/area_3d.gd" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://wbma48au5pl4" path="res://assets/models/road_source/signs/speed_limit.tscn" id="7_pa8r4"]
 [ext_resource type="Script" uid="uid://dmekqrp4eq0n6" path="res://scripts/lesson.gd" id="8_15mv3"]
+[ext_resource type="PackedScene" uid="uid://cmixxy141eujr" path="res://scenes/controls_tutorial.tscn" id="9_e3sih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0br7"]
 albedo_color = Color(0.053080797, 0.35290337, 0.15272775, 1)
@@ -63,5 +64,7 @@ transform = Transform3D(-0.99, 0, -1.4948584e-07, 0, 0.99, 0, 1.4948584e-07, 0, 
 [node name="Node3D" type="Node3D" parent="." unique_id=654948612 node_paths=PackedStringArray("player")]
 script = ExtResource("8_15mv3")
 player = NodePath("../Player")
+
+[node name="ControlsTutorial" parent="." unique_id=1567991815 instance=ExtResource("9_e3sih")]
 
 [connection signal="body_entered" from="Barrier" to="Barrier" method="_on_body_entered"]

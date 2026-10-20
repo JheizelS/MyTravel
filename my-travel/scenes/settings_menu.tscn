@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyuvl"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="SettingsMenu" type="Control" unique_id=1242922003 groups=["no_pause"]]
+[node name="SettingsMenu" type="Control" unique_id=1242922003 node_paths=PackedStringArray("assist_on", "assist_off") groups=["no_pause"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cr101")
+assist_on = NodePath("Panel/VBoxContainer/Label/HBoxContainer/AssistButtonEnabled")
+assist_off = NodePath("Panel/VBoxContainer/Label/HBoxContainer/AssistButtonDisabled")
 
 [node name="Panel" type="Panel" parent="." unique_id=319548758]
 layout_mode = 1
@@ -24,60 +26,88 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xyuvl")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2127202647]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=893912830]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -194.0
 offset_right = 194.0
-offset_bottom = 72.0
+offset_bottom = 362.0
 grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=2127202647]
+layout_mode = 2
 theme_override_constants/margin_top = 55
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1941502354]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="GraphicsQuality" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1884202070]
+[node name="GraphicsQuality" type="Label" parent="Panel/VBoxContainer/MarginContainer" unique_id=1884202070]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wswnh")
 theme_override_font_sizes/font_size = 49
-text = "Graphics Quality"
+text = "settings_graphics"
+horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel" unique_id=1284811861]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=1284811861]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2" unique_id=1456461936]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HighQualityButton" type="Button" parent="Panel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=363642031]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wswnh")
+theme_override_font_sizes/font_size = 50
+text = "settings_high"
+
+[node name="LowQualityButton" type="Button" parent="Panel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1917865167]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wswnh")
+theme_override_font_sizes/font_size = 50
+text = "settings_low"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=344196910]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wswnh")
+theme_override_font_sizes/font_size = 49
+text = "settings_assist"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Label" unique_id=987877649]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -21.0
+offset_top = 73.0
+offset_right = 19.0
+offset_bottom = 113.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 150
+offset_transform_enabled = true
+theme_override_constants/separation = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer2" unique_id=1456461936]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="HighQualityButton" type="Button" parent="Panel/MarginContainer2/HBoxContainer" unique_id=363642031]
+[node name="AssistButtonEnabled" type="Button" parent="Panel/VBoxContainer/Label/HBoxContainer" unique_id=1760018216]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wswnh")
 theme_override_font_sizes/font_size = 50
-text = "HIGH"
+text = "settings_enabled"
 
-[node name="LowQualityButton" type="Button" parent="Panel/MarginContainer2/HBoxContainer" unique_id=1917865167]
+[node name="AssistButtonDisabled" type="Button" parent="Panel/VBoxContainer/Label/HBoxContainer" unique_id=1181201705]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wswnh")
 theme_override_font_sizes/font_size = 50
-text = "LOW"
+text = "settings_disabled"
 
-[node name="BackButton" type="Button" parent="Panel" unique_id=2088443178]
+[node name="BackButton" type="Button" parent="." unique_id=2088443178]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 106.0
+offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("2_wswnh")
 theme_override_font_sizes/font_size = 25
-text = "RETURN"
+text = "ui_back"
 
-[connection signal="pressed" from="Panel/MarginContainer2/HBoxContainer/HighQualityButton" to="." method="_on_high_quality_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer2/HBoxContainer/HighQualityButton" to="." method="_on_high_quality_button_pressed"]

@@ -26,7 +26,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_abqqa")
 theme_override_font_sizes/font_size = 20
-text = "SPEEDING"
+text = "popup_speeding"
 horizontal_alignment = 1
 
 [node name="Sign" type="TextureRect" parent="VBoxContainer" unique_id=176732246]
@@ -46,7 +46,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_abqqa")
 theme_override_font_sizes/font_size = 20
-text = "To continue driving:"
+text = "popup_continue"
 
 [node name="SpaceBarPrompt" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1125297173]
 custom_minimum_size = Vector2(120, 45)

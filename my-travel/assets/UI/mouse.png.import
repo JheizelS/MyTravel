@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1nv7lb31liwx"
-path="res://.godot/imported/keep-left-sign.png-1ed0d88a51ed303ae23272336e35dd88.ctex"
+uid="uid://bex3lpcjjiu3w"
+path="res://.godot/imported/mouse.png-dda9ae03395f8ba697c884dc34803654.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/keep-left-sign.png"
-dest_files=["res://.godot/imported/keep-left-sign.png-1ed0d88a51ed303ae23272336e35dd88.ctex"]
+source_file="res://assets/UI/mouse.png"
+dest_files=["res://.godot/imported/mouse.png-dda9ae03395f8ba697c884dc34803654.ctex"]
 
 [params]
 

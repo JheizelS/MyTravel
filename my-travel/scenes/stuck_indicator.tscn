@@ -21,11 +21,11 @@ offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=533564127]
+[node name="StuckLabel" type="Label" parent="VBoxContainer" unique_id=533564127]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_txjvg")
 theme_override_font_sizes/font_size = 30
-text = "STUCK?"
+text = "popup_stuck"
 horizontal_alignment = 1
 
 [node name="Sign" type="TextureRect" parent="VBoxContainer" unique_id=222096773]
@@ -39,11 +39,11 @@ stretch_mode = 5
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1992413493]
+[node name="PressLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1992413493]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_txjvg")
 theme_override_font_sizes/font_size = 30
-text = "Press "
+text = "popup_press"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1991637972]
 layout_mode = 2

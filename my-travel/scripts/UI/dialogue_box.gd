@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var panel: Panel = $Panel
+@onready var panel: Control = $Panel
 @onready var speaker_label: Label = $Panel/MarginContainer/VBoxContainer/SpeakerLabel
 @onready var dialogue_label: Label = $Panel/MarginContainer/VBoxContainer/DialogueLabel
 

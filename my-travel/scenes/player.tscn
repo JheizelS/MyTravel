@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://faqrow2mynrf" path="res://assets/UI/speedometer.png" id="16_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://dkbtctb3ulhka" path="res://assets/UI/needle.png" id="17_qfm1y"]
 [ext_resource type="AudioStream" uid="uid://dhvwdecpwoafu" path="res://assets/audio/dragon-studio-car-engine-372477.mp3" id="18_4r5pv"]
+[ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="19_a38lo"]
 [ext_resource type="Script" uid="uid://c7hswx18jn45j" path="res://scripts/systems/score_label.gd" id="19_i4ail"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8vuu"]
@@ -119,7 +120,7 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=727400863]
 
-[node name="WASD" type="GridContainer" parent="CanvasLayer" unique_id=387010816]
+[node name="WASDContainer" type="GridContainer" parent="CanvasLayer" unique_id=387010816]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -137,28 +138,28 @@ theme_override_constants/v_separation = -5
 columns = 3
 script = ExtResource("7_3v2ag")
 
-[node name="empty_space" type="Control" parent="CanvasLayer/WASD" unique_id=37310240]
+[node name="empty_space" type="Control" parent="CanvasLayer/WASDContainer" unique_id=37310240]
 layout_mode = 2
 
-[node name="keyboard_w" type="TextureRect" parent="CanvasLayer/WASD" unique_id=2126119387]
+[node name="keyboard_w" type="TextureRect" parent="CanvasLayer/WASDContainer" unique_id=2126119387]
 layout_mode = 2
 texture = ExtResource("7_d2wvv")
 stretch_mode = 5
 
-[node name="empty_space2" type="Control" parent="CanvasLayer/WASD" unique_id=814309908]
+[node name="empty_space2" type="Control" parent="CanvasLayer/WASDContainer" unique_id=814309908]
 layout_mode = 2
 
-[node name="keyboard_a" type="TextureRect" parent="CanvasLayer/WASD" unique_id=2139580778]
+[node name="keyboard_a" type="TextureRect" parent="CanvasLayer/WASDContainer" unique_id=2139580778]
 layout_mode = 2
 texture = ExtResource("8_3v2ag")
 stretch_mode = 5
 
-[node name="keyboard_s" type="TextureRect" parent="CanvasLayer/WASD" unique_id=443856194]
+[node name="keyboard_s" type="TextureRect" parent="CanvasLayer/WASDContainer" unique_id=443856194]
 layout_mode = 2
 texture = ExtResource("9_jej6c")
 stretch_mode = 5
 
-[node name="keyboard_d" type="TextureRect" parent="CanvasLayer/WASD" unique_id=1793123025]
+[node name="keyboard_d" type="TextureRect" parent="CanvasLayer/WASDContainer" unique_id=1793123025]
 layout_mode = 2
 texture = ExtResource("10_f1ej7")
 stretch_mode = 5
@@ -413,7 +414,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dm6ti")
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("14_oprun")
+theme_override_fonts/font = ExtResource("19_a38lo")
 theme_override_font_sizes/font_size = 29
 text = "Score:"
 script = ExtResource("19_i4ail")
@@ -437,7 +438,6 @@ stream = ExtResource("18_4r5pv")
 volume_db = 5.0
 
 [node name="WrongLaneDetector" type="Area3D" parent="." unique_id=842204253]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WrongLaneDetector" unique_id=614525052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0049438477, -0.13922119, -0.25634766)

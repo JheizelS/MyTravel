@@ -14,7 +14,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rtw2f")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=142821675]
+[node name="CarArt" type="Control" parent="." unique_id=1506604260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CarArt" unique_id=142821675]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,37 +31,37 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=267021259]
+[node name="SubViewport" type="SubViewport" parent="CarArt/SubViewportContainer" unique_id=267021259]
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="CarBody" type="Polygon2D" parent="SubViewportContainer/SubViewport" unique_id=160426770]
+[node name="CarBody" type="Polygon2D" parent="CarArt/SubViewportContainer/SubViewport" unique_id=160426770]
 position = Vector2(-195, -167)
 scale = Vector2(1.1445975, 1)
 color = Color(0.12782514, 0.43538207, 0.3632391, 1)
 polygon = PackedVector2Array(490.12863, 222, 485.76025, 297, 490.1286, 379, 499.73898, 416, 526.82275, 448, 560.8959, 479, 584.4849, 494, 607.2003, 509, 662.2415, 528, 714.6617, 535, 778.4396, 538, 1203.9167, 543, 1204.7904, 132, 504.10736, 139, 495.37067, 172)
 
-[node name="SpinningWheel" parent="SubViewportContainer/SubViewport" unique_id=1811482798 instance=ExtResource("1_l6cm7")]
+[node name="SpinningWheel" parent="CarArt/SubViewportContainer/SubViewport" unique_id=1811482798 instance=ExtResource("1_l6cm7")]
 position = Vector2(900, 450)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer" unique_id=156760565]
+[node name="CanvasLayer" type="CanvasLayer" parent="CarArt/SubViewportContainer" unique_id=156760565]
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/CanvasLayer" unique_id=1748818898]
+[node name="MarginContainer" type="MarginContainer" parent="CarArt/SubViewportContainer/CanvasLayer" unique_id=1748818898]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 350.0
 grow_vertical = 2
 theme_override_constants/margin_left = 9
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/CanvasLayer/MarginContainer" unique_id=2121892677]
+[node name="HBoxContainer" type="HBoxContainer" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer" unique_id=2121892677]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer" unique_id=68519107]
+[node name="VBoxContainer" type="VBoxContainer" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer" unique_id=68519107]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Title" type="Label" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2025348935]
+[node name="Title" type="Label" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2025348935]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_wu84c")
@@ -63,53 +71,47 @@ MYTRAVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1332217513]
+[node name="Subtitle" type="Label" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1332217513]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wu84c")
 theme_override_font_sizes/font_size = 22
-text = "Learn NZ Road rules and environment"
+text = "menu_subtitle"
+autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=551426992]
+[node name="VBoxContainer" type="VBoxContainer" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=551426992]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="StartJourneyButton" type="Button" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1152053205]
+[node name="StartJourneyButton" type="Button" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1152053205]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.3529412, 0.8509804, 0.27450982, 1)
 theme_override_fonts/font = ExtResource("3_wu84c")
 theme_override_font_sizes/font_size = 38
 theme_override_icons/icon = ExtResource("5_rtw2f")
-text = "START JOURNEY"
+text = "menu_start"
 icon = ExtResource("5_rtw2f")
 expand_icon = true
 
-[node name="ContinueButton" type="Button" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=301356910]
+[node name="SettingsButton" type="Button" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1981300806]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wu84c")
 theme_override_font_sizes/font_size = 32
-text = "CONTINUE "
+text = "menu_settings"
 
-[node name="SettingsButton" type="Button" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1981300806]
+[node name="CreditsButton" type="Button" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=76097938]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wu84c")
 theme_override_font_sizes/font_size = 32
-text = "SETTINGS"
+text = "menu_credits"
 
-[node name="CreditsButton" type="Button" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=76097938]
+[node name="ExitButton" type="Button" parent="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=2102049656]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wu84c")
 theme_override_font_sizes/font_size = 32
-text = "CREDITS"
+text = "menu_quit"
 
-[node name="ExitButton" type="Button" parent="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=2102049656]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wu84c")
-theme_override_font_sizes/font_size = 32
-text = "EXIT
-"
-
-[connection signal="pressed" from="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/StartJourneyButton" to="." method="_on_start_journey_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/StartJourneyButton" to="." method="_on_start_journey_button_pressed"]
+[connection signal="pressed" from="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CarArt/SubViewportContainer/CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,29 +1,136 @@
 keys,en,mi,zh,hi,ko,fil
-disclaimer_title,DISCLAIMER,WHAKAMĀRAMATANGA,免责声明,अस्वीकरण,면책 조항,PAALALA
+disclaimer_title,DISCLAIMER,WHAKAMĀRĀMATANGA,免责声明,अस्वीकरण,면책 조항,PAALALA
 disclaimer_body,"Welcome! MyTravel helps you get familiar with New Zealand road rules and driving in a low-stakes environment.
 
 It's a learning tool, not a replacement for an official driving course or the NZTA road code.
 
-Driving here is simplified for gameplay.","Nau mai! Ka āwhina a MyTravel i a koe kia mōhio ki ngā ture huarahi o Aotearoa me te taraiwa i roto i tētahi taiao raru-iti.
+Driving here is simplified for gameplay.","Nau mai! Ka āwhina a MyTravel i a koe ki te waia ki ngā ture huarahi o Aotearoa me te taraiwa i roto i tētahi taiao e iti ana ngā pānga o ngā hapa.
 
-He kēmu ako tēnei, ehara i te whakakapinga mō tētahi akoranga taraiwa whaimana, mō te waehere huarahi NZTA rānei.
+He taputapu ako tēnei, ehara i te whakakapi mō tētahi akoranga taraiwa whaimana, mō te Waehere Huarahi a NZTA rānei.
 
-Kua whakamāmātia te taraiwa i konei mō te tākaro.","欢迎！MyTravel 帮助您熟悉新西兰的道路规则，并在低风险的环境中练习驾驶。
+Kua whakangāwaritia te taraiwa i tēnei kēmu mō te tākaro.","欢迎！MyTravel 帮助您熟悉新西兰的道路规则，并在低风险的环境中了解驾驶。
 
-这是一款学习工具，并非正式驾驶课程或 NZTA 道路守则的替代品。
+这是一款学习工具，不能替代正式的驾驶课程或新西兰交通局（NZTA）的道路规则手册。
 
-游戏中的驾驶操作已为可玩性进行了简化。","स्वागत है! MyTravel आपको न्यूज़ीलैंड के सड़क नियमों से परिचित होने और कम जोखिम वाले माहौल में ड्राइविंग का अभ्यास करने में मदद करता है।
+游戏中的驾驶操作已为游戏体验进行了简化。","स्वागत है! MyTravel आपको न्यूज़ीलैंड के सड़क नियमों से परिचित होने और कम जोखिम वाले माहौल में ड्राइविंग सीखने में मदद करता है。
 
-यह एक सीखने का उपकरण है, किसी आधिकारिक ड्राइविंग कोर्स या NZTA रोड कोड का विकल्प नहीं।
+यह एक सीखने का उपकरण है, किसी आधिकारिक ड्राइविंग कोर्स या NZTA के रोड कोड का विकल्प नहीं है。
 
-यहाँ ड्राइविंग को गेमप्ले के लिए सरल बनाया गया है。","환영합니다! MyTravel은 뉴질랜드 도로 규칙을 익히고 낮은 위험 환경에서 운전을 연습하는 데 도움을 줍니다.
+यहाँ ड्राइविंग को गेमप्ले के लिए सरल बनाया गया है।","환영합니다! MyTravel은 뉴질랜드의 도로 규칙을 익히고 실수에 따른 부담이 적은 환경에서 운전을 배울 수 있도록 도와줍니다.
 
-이것은 학습 도구이며, 공식 운전 교육 과정이나 NZTA 도로 규정을 대신하지 않습니다.
+이 게임은 학습 도구이며, 공식 운전 교육 과정이나 NZTA 도로 규정을 대신하지 않습니다.
 
-이 게임의 운전은 게임플레이를 위해 단순화되었습니다.","Maligayang pagdating! Tinutulungan ka ng MyTravel na maging pamilyar sa mga batas trapiko ng New Zealand at magsanay ng pagmamaneho sa isang ligtas na kapaligiran.
+게임의 운전 방식은 게임플레이를 위해 단순화되었습니다.","Maligayang pagdating! Tinutulungan ka ng MyTravel na maging pamilyar sa mga batas trapiko ng New Zealand at matuto tungkol sa pagmamaneho sa isang kapaligirang mababa ang panganib.
 
-Ito ay isang kagamitang panturo, hindi kapalit ng opisyal na kursong pagmamaneho o ng NZTA road code.
+Isa itong kagamitang panturo, hindi kapalit ng opisyal na kurso sa pagmamaneho o ng NZTA Road Code.
 
-Pinasimple ang pagmamaneho dito para sa gameplay."
-disclaimer_hint,Click anywhere to continue,Pāwhiritia ngā wāhi katoa kia haere tonu,点击任意位置以继续,जारी रखने के लिए कहीं भी क्लिक करें,계속하려면 아무 곳이나 클릭하세요,I-click kahit saan para magpatuloy
-disclaimer_agree,"By continuing, you understand MyTravel is a game for practising road rule familiarity.","Mā te haere tonu, ka mārama koe he kēmu a MyTravel mō te whakapakari mōhiotanga ki ngā ture huarahi.","继续即表示您理解 MyTravel 是一款用于练习道路规则熟悉度的游戏。","जारी रखकर, आप समझते हैं कि MyTravel सड़क नियमों से परिचित होने के अभ्यास के लिए एक गेम है।","계속 진행하시면 MyTravel이 도로 규칙 숙지를 연습하기 위한 게임임을 이해하시는 것으로 간주됩니다.","Sa pagpapatuloy, nauunawaan mong ang MyTravel ay isang laro para sa pagsasanay ng kaalaman sa mga batas trapiko."
+Pinasimple ang pagmamaneho sa larong ito para sa gameplay."
+disclaimer_hint,Click anywhere to continue,Pāwhiritia ki hea atu kia haere tonu,点击任意位置以继续,जारी रखने के लिए कहीं भी क्लिक करें,계속하려면 화면 아무 곳이나 클릭하세요,I-click kahit saan upang magpatuloy
+disclaimer_agree,"By continuing, you understand MyTravel is a game for practising road rule familiarity.","Mā te haere tonu, e whakaae ana koe he kēmu a MyTravel hei āwhina i a koe ki te waia ki ngā ture huarahi.","继续即表示您理解 MyTravel 是一款帮助玩家熟悉道路规则的游戏。","जारी रखकर, आप समझते हैं कि MyTravel सड़क नियमों से परिचित होने का अभ्यास करने के लिए एक गेम है।","계속하면 MyTravel이 도로 규칙을 익히기 위한 게임임을 이해하는 것입니다.","Sa pagpapatuloy, nauunawaan mong ang MyTravel ay isang laro para masanay ka sa mga batas trapiko."
+menu_subtitle,Learn New Zealand road rules and about the driving environment,Ako ki ngā ture huarahi me te taiao taraiwa o Aotearoa,了解新西兰道路规则与驾驶环境,न्यूज़ीलैंड के सड़क नियम और ड्राइविंग परिवेश सीखें,뉴질랜드의 도로 규칙과 운전 환경을 배워보세요,Alamin ang mga batas trapiko at kapaligiran sa pagmamaneho sa New Zealand
+menu_start,START JOURNEY,TĪMATA TE HAERENGA,开始旅程,यात्रा शुरू करें,여정 시작,SIMULAN ANG PAGLALAKBAY
+menu_settings,SETTINGS,NGĀ TAUTUHINGA,设置,सेटिंग्स,설정,MGA SETTING
+menu_credits,CREDITS,NGĀ MIHI,制作人员,क्रेडिट्स,제작진,MGA KREDITO
+menu_quit,EXIT,PUTA ATU,退出,बाहर निकलें,나가기,LUMABAS
+
+settings_graphics,Graphics Quality,Kounga Whakairoiro,画质,ग्राफ़िक्स गुणवत्ता,그래픽 품질,Kalidad ng Graphics
+settings_high,HIGH,TEITEI,高,उच्च,높음,MATAAS
+settings_low,LOW,ITIRO,低,निम्न,낮음,MABABA
+settings_assist,Assisted Driving Mode,Aratau Taraiwa Āwhina,辅助驾驶模式,सहायता प्राप्त ड्राइविंग मोड,보조 운전 모드,Mode ng Tulong sa Pagmamaneho
+settings_enabled,ENABLED,WHAKAHOHE,开启,सक्षम,활성화,NAAKTIBO
+settings_disabled,DISABLED,WHAKAKORE,关闭,अक्षम,비활성화,HINDI AKTIBO
+ui_back,RETURN,HOKI,返回,वापस जाएँ,돌아가기,BUMALIK
+
+lesson_speaker,Instructor,Kaiako,教练,प्रशिक्षक,강사,Tagapagturo
+lesson_click_continue,(Click to continue),(Pāwhiritia kia haere tonu),（点击继续）,(जारी रखने के लिए क्लिक करें),(계속하려면 클릭하세요),(I-click upang magpatuloy)
+lesson_welcome_title,Welcome to MyTravel!,Nau mai ki MyTravel!,欢迎来到 MyTravel！,MyTravel में आपका स्वागत है!,MyTravel에 오신 것을 환영합니다!,Maligayang pagdating sa MyTravel!
+lesson_welcome_body,"In New Zealand, you drive on the left side of the road. Keep to the left side of the road, and stay under the speed limit (or you start to lose points!) and reach a score of %d at the end of the lap to complete this lesson.","I Aotearoa, ka taraiwa koe i te taha mauī o te huarahi. Me noho ki te taha mauī, ā, me whai i te tepe tere (ki te kore, ka ngaro ō tohu!). Kia eke ki te %d tohu i te mutunga o te porowhita hei whakaoti i tēnei akoranga.","在新西兰，车辆靠左行驶。请保持在道路左侧，并遵守限速规定（否则会被扣分！）。在一圈结束时达到 %d 分即可完成本课程。","न्यूज़ीलैंड में सड़क के बाईं ओर गाड़ी चलाई जाती है। सड़क के बाईं ओर रहें और गति सीमा का पालन करें (वरना आपके अंक कटने लगेंगे!)। इस पाठ को पूरा करने के लिए एक चक्कर के अंत तक %d अंक हासिल करें।","뉴질랜드에서는 도로의 왼쪽으로 운전합니다. 도로 왼쪽을 유지하고 제한 속도를 지키세요(위반하면 점수가 깎입니다!). 한 바퀴가 끝날 때 %d점에 도달하면 이 레슨을 완료할 수 있습니다.","Sa New Zealand, sa kaliwang bahagi ng kalsada nagmamaneho. Manatili sa kaliwa at sumunod sa limitasyon ng bilis (kung hindi, mababawasan ang iyong puntos!). Makakuha ng %d puntos sa dulo ng isang ikot upang makumpleto ang araling ito."
+lesson_start_engine,Press Tab to start the engine.,Pēhia te Tab hei whakaara i te pūkaha.,按 Tab 键启动发动机。,इंजन चालू करने के लिए Tab दबाएँ。,Tab 키를 눌러 시동을 거세요。,Pindutin ang Tab upang paandarin ang makina.
+lesson_headlights,Good. Now press T to turn on your headlights — you'll need them tonight.,Ka pai. Inaianei pēhia te T hei whakakā i ngā rama o mua — ka hiahiatia ēnei ā te pō nei.,很好。现在按 T 键打开前灯——今晚你会用到它们。,बहुत बढ़िया। अब हेडलाइट चालू करने के लिए T दबाएँ — आज रात आपको इनकी ज़रूरत होगी।,좋아요. 이제 T 키를 눌러 헤드라이트를 켜세요. 오늘 밤에는 필요할 거예요.,Magaling. Ngayon, pindutin ang T upang buksan ang mga headlight — kakailanganin mo ang mga ito ngayong gabi.
+lesson_loop,Complete one full loop of the track to pass this lesson. Speed up! You only earn points driving between %d and %d km/h.,Whakaotia kia kotahi te porowhita katoa o te ara hei paahi i tēnei akoranga. Kia tere ake! Ka whiwhi tohu koe mēnā kei waenga i te %d me te %d km/h tō tere.,完成赛道一整圈即可通过本课程。加速！只有以 %d 到 %d 公里/小时的速度行驶才能得分。,इस पाठ को पास करने के लिए ट्रैक का एक पूरा चक्कर पूरा करें। गति बढ़ाएँ! आपको केवल %d से %d किमी/घंटा के बीच गाड़ी चलाने पर ही अंक मिलेंगे。,트랙을 한 바퀴 완주하면 이 레슨을 통과합니다. 속도를 올리세요! %d~%d km/h로 주행할 때만 점수를 얻습니다.,Kumpletuhin ang isang buong ikot ng track upang makapasa sa araling ito. Bilisan mo! Makakakuha ka lamang ng puntos kapag nagmamaneho sa pagitan ng %d at %d km/h.
+
+pause_main_menu,MAIN MENU,PĀTAKA MATUA,主菜单,मुख्य मेनू,메인 메뉴,PANGUNAHING MENU
+
+hud_score,Score: %d / %d,Tohu: %d / %d,得分：%d / %d,स्कोर: %d / %d,점수: %d / %d,Iskor: %d / %d
+
+popup_speeding,SPEEDING,TE TERE RAWA,超速,गति सीमा से अधिक,과속,SOBRANG BILIS
+popup_too_slow,TOO SLOW,TE PUHOI RAWA,太慢,बहुत धीमी गति,너무 느림,MASYADONG MABAGAL
+popup_return_lane,RETURN TO LANE,HOKI KI TE ARA,返回车道,लेन में वापस आएँ,차선으로 돌아가세요,BUMALIK SA LANE
+popup_continue,To continue driving:,Hei haere tonu i te taraiwa:,继续驾驶：,गाड़ी चलाना जारी रखने के लिए:,운전을 계속하려면:,Para magpatuloy sa pagmamaneho:
+popup_keep_left,KEEP LEFT,NOHO KI TE MAUĪ,靠左行驶,बाईं ओर चलें,왼쪽으로 주행하세요,MANATILI SA KALIWA
+
+popup_stuck,STUCK?,KUA MAU?,卡住了？,अटक गए?,막혔나요?,NAIPIT?
+popup_press,Press,Pēhia,按,दबाएँ,누르세요,Pindutin ang
+
+tutorial_move,To move use...,Hei neke whakamahia...,移动时请使用……,चलने के लिए इनका उपयोग करें…,이동하려면 다음을 사용하세요…,"Para gumalaw, gamitin ang..."
+tutorial_continue,Click to continue,Pāwhiritia kia haere tonu,点击继续,जारी रखने के लिए क्लिक करें,계속하려면 클릭하세요,I-click upang magpatuloy
+
+tutorial_other,Other useful controls,Ētahi atu mana whakahaere whaihua,其他实用操作,अन्य有用的操作,기타 유용한 조작,Iba pang kapaki-pakinabang na kontrol
+keys,en,mi,zh,hi,ko,fil
+disclaimer_title,DISCLAIMER,WHAKAMĀRĀMATANGA,免责声明,अस्वीकरण,면책 조항,PAALALA
+disclaimer_body,"Welcome! MyTravel helps you get familiar with New Zealand road rules and driving in a low-stakes environment.
+
+It's a learning tool, not a replacement for an official driving course or the NZTA road code.
+
+Driving here is simplified for gameplay.","Nau mai! Ka āwhina a MyTravel i a koe ki te waia ki ngā ture huarahi o Aotearoa me te taraiwa i roto i tētahi taiao e iti ana ngā pānga o ngā hapa.
+
+He taputapu ako tēnei, ehara i te whakakapi mō tētahi akoranga taraiwa whaimana, mō te Waehere Huarahi a NZTA rānei.
+
+Kua whakangāwaritia te taraiwa i tēnei kēmu mō te tākaro.","欢迎！MyTravel 帮助您熟悉新西兰的道路规则，并在低风险的环境中了解驾驶。
+
+这是一款学习工具，不能替代正式的驾驶课程或新西兰交通局（NZTA）的道路规则手册。
+
+游戏中的驾驶操作已为游戏体验进行了简化。","स्वागत है! MyTravel आपको न्यूज़ीलैंड के सड़क नियमों से परिचित होने और कम जोखिम वाले माहौल में ड्राइविंग सीखने में मदद करता है。
+
+यह एक सीखने का उपकरण है, किसी आधिकारिक ड्राइविंग कोर्स या NZTA के रोड कोड का विकल्प नहीं है。
+
+यहाँ ड्राइविंग को गेमप्ले के लिए सरल बनाया गया है।","환영합니다! MyTravel은 뉴질랜드의 도로 규칙을 익히고 실수에 따른 부담이 적은 환경에서 운전을 배울 수 있도록 도와줍니다.
+
+이 게임은 학습 도구이며, 공식 운전 교육 과정이나 NZTA 도로 규정을 대신하지 않습니다.
+
+게임의 운전 방식은 게임플레이를 위해 단순화되었습니다.","Maligayang pagdating! Tinutulungan ka ng MyTravel na maging pamilyar sa mga batas trapiko ng New Zealand at matuto tungkol sa pagmamaneho sa isang kapaligirang mababa ang panganib.
+
+Isa itong kagamitang panturo, hindi kapalit ng opisyal na kurso sa pagmamaneho o ng NZTA Road Code.
+
+Pinasimple ang pagmamaneho sa larong ito para sa gameplay."
+disclaimer_hint,Click anywhere to continue,Pāwhiritia ki hea atu kia haere tonu,点击任意位置以继续,जारी रखने के लिए कहीं भी क्लिक करें,계속하려면 화면 아무 곳이나 클릭하세요,I-click kahit saan upang magpatuloy
+disclaimer_agree,"By continuing, you understand MyTravel is a game for practising road rule familiarity.","Mā te haere tonu, e whakaae ana koe he kēmu a MyTravel hei āwhina i a koe ki te waia ki ngā ture huarahi.","继续即表示您理解 MyTravel 是一款帮助玩家熟悉道路规则的游戏。","जारी रखकर, आप समझते हैं कि MyTravel सड़क नियमों से परिचित होने का अभ्यास करने के लिए एक गेम है।","계속하면 MyTravel이 도로 규칙을 익히기 위한 게임임을 이해하는 것입니다.","Sa pagpapatuloy, nauunawaan mong ang MyTravel ay isang laro para masanay ka sa mga batas trapiko."
+menu_subtitle,Learn New Zealand road rules and about the driving environment,Ako ki ngā ture huarahi me te taiao taraiwa o Aotearoa,了解新西兰道路规则与驾驶环境,न्यूज़ीलैंड के सड़क नियम और ड्राइविंग परिवेश सीखें,뉴질랜드의 도로 규칙과 운전 환경을 배워보세요,Alamin ang mga batas trapiko at kapaligiran sa pagmamaneho sa New Zealand
+menu_start,START JOURNEY,TĪMATA TE HAERENGA,开始旅程,यात्रा शुरू करें,여정 시작,SIMULAN ANG PAGLALAKBAY
+menu_settings,SETTINGS,NGĀ TAUTUHINGA,设置,सेटिंग्स,설정,MGA SETTING
+menu_credits,CREDITS,NGĀ MIHI,制作人员,क्रेडिट्स,제작진,MGA KREDITO
+menu_quit,EXIT,PUTA ATU,退出,बाहर निकलें,나가기,LUMABAS
+
+settings_graphics,Graphics Quality,Kounga Whakairoiro,画质,ग्राफ़िक्स गुणवत्ता,그래픽 품질,Kalidad ng Graphics
+settings_high,HIGH,TEITEI,高,उच्च,높음,MATAAS
+settings_low,LOW,ITIRO,低,निम्न,낮음,MABABA
+settings_assist,Assisted Driving Mode,Aratau Taraiwa Āwhina,辅助驾驶模式,सहायता प्राप्त ड्राइविंग मोड,보조 운전 모드,Mode ng Tulong sa Pagmamaneho
+settings_enabled,ENABLED,WHAKAHOHE,开启,सक्षम,활성화,NAAKTIBO
+settings_disabled,DISABLED,WHAKAKORE,关闭,अक्षम,비활성화,HINDI AKTIBO
+ui_back,RETURN,HOKI,返回,वापस जाएँ,돌아가기,BUMALIK
+
+lesson_speaker,Instructor,Kaiako,教练,प्रशिक्षक,강사,Tagapagturo
+lesson_click_continue,(Click to continue),(Pāwhiritia kia haere tonu),（点击继续）,(जारी रखने के लिए क्लिक करें),(계속하려면 클릭하세요),(I-click upang magpatuloy)
+lesson_welcome_title,Welcome to MyTravel!,Nau mai ki MyTravel!,欢迎来到 MyTravel！,MyTravel में आपका स्वागत है!,MyTravel에 오신 것을 환영합니다!,Maligayang pagdating sa MyTravel!
+lesson_welcome_body,"In New Zealand, you drive on the left side of the road. Keep to the left side of the road, and stay under the speed limit (or you start to lose points!) and reach a score of %d at the end of the lap to complete this lesson.","I Aotearoa, ka taraiwa koe i te taha mauī o te huarahi. Me noho ki te taha mauī, ā, me whai i te tepe tere (ki te kore, ka ngaro ō tohu!). Kia eke ki te %d tohu i te mutunga o te porowhita hei whakaoti i tēnei akoranga.","在新西兰，车辆靠左行驶。请保持在道路左侧，并遵守限速规定（否则会被扣分！）。在一圈结束时达到 %d 分即可完成本课程。","न्यूज़ीलैंड में सड़क के बाईं ओर गाड़ी चलाई जाती है। सड़क के बाईं ओर रहें और गति सीमा का पालन करें (वरना आपके अंक कटने लगेंगे!)। इस पाठ को पूरा करने के लिए एक चक्कर के अंत तक %d अंक हासिल करें।","뉴질랜드에서는 도로의 왼쪽으로 운전합니다. 도로 왼쪽을 유지하고 제한 속도를 지키세요(위반하면 점수가 깎입니다!). 한 바퀴가 끝날 때 %d점에 도달하면 이 레슨을 완료할 수 있습니다.","Sa New Zealand, sa kaliwang bahagi ng kalsada nagmamaneho. Manatili sa kaliwa at sumunod sa limitasyon ng bilis (kung hindi, mababawasan ang iyong puntos!). Makakuha ng %d puntos sa dulo ng isang ikot upang makumpleto ang araling ito."
+lesson_start_engine,Press Tab to start the engine.,Pēhia te Tab hei whakaara i te pūkaha.,按 Tab 键启动发动机。,按 Tab 键启动发动机。,Tab 키를 눌러 시동을 거세요.,Pindutin ang Tab upang paandarin ang makina.
+lesson_headlights,Good. Now press T to turn on your headlights — you'll need them tonight.,Ka pai. Inaianei pēhia te T hei whakakā i ngā rama o mua — ka hiahiatia ēnei ā te pō nei.,很好。现在按 T 键打开前灯——今晚你会用到它们。,बहुत बढ़िया। अब हेडलाइट चालू करने के लिए T दबाएँ — आज रात आपको इनकी ज़रूरत होगी।,좋아요. 이제 T 키를 눌러 헤드라이트를 켜세요. 오늘 밤에는 필요할 거예요.,Magaling. Ngayon, pindutin ang T upang buksan ang mga headlight — kakailanganin mo ang mga ito ngayong gabi.
+lesson_loop,Complete one full loop of the track to pass this lesson. Speed up! You only earn points driving between %d and %d km/h.,Whakaotia kia kotahi te porowhita katoa o te ara hei paahi i tēnei akoranga. Kia tere ake! Ka whiwhi tohu koe mēnā kei waenga i te %d me te %d km/h tō tere.,完成赛道一整圈即可通过本课程。加速！只有以 %d 到 %d 公里/小时的速度行驶才能得分。,完成赛道一整圈即可通过本课程。加速！只有以 %d 到 %d 公里/小时的速度行驶才能得分。,트랙을 한 바퀴 완주하면 이 레슨을 통과합니다. 속도를 올리세요! %d~%d km/h로 주행할 때만 점수를 얻습니다.,Kumpletuhin ang isang buong ikot ng track upang makapasa sa araling ito. Bilisan mo! Makakakuha ka lamang ng puntos kapag nagmamaneho sa pagitan ng %d at %d km/h.
+
+pause_main_menu,MAIN MENU,PĀTAKA MATUA,主菜单,मुख्य मेनू,메인 메뉴,PANGUNAHING MENU
+
+hud_score,Score: %d / %d,Tohu: %d / %d,得分：%d / %d,स्कोर: %d / %d,점수: %d / %d,Iskor: %d / %d
+
+popup_speeding,SPEEDING,TE TERE RAWA,超速,गति सीमा से अधिक,과속,SOBRANG BILIS
+popup_too_slow,TOO SLOW,TE PUHOI RAWA,太慢,बहुत धीमी गति,너무 느림,MASYADONG MABAGAL
+popup_return_lane,RETURN TO LANE,HOKI KI TE ARA,返回车道,लेन में वापस आएँ,차선으로 돌아가세요,BUMALIK SA LANE
+popup_continue,To continue driving:,Hei haere tonu i te taraiwa:,继续驾驶：,गाड़ी चलाना जारी रखने के लिए:,운전을 계속하려면:,Para magpatuloy sa pagmamaneho:
+popup_keep_left,KEEP LEFT,NOHO KI TE MAUĪ,靠左行驶,बाईं ओर चलें,왼쪽으로 주행하세요,MANATILI SA KALIWA
+
+popup_stuck,STUCK?,KUA MAU?,卡住了？,अटक गए?,막혔나요?,NAIPIT?
+popup_press,Press,Pēhia,按,दबाएँ,누르세요,Pindutin ang
+
+tutorial_move,To move use...,Hei neke whakamahia...,移动时请使用……,चलने के लिए इनका उपयोग करें…,이동하려면 다음을 사용하세요…,"Para gumalaw, gamitin ang..."
+tutorial_continue,Click to continue,Pāwhiritia kia haere tonu,点击继续,जारी रखने के लिए क्लिक करें,계속하려면 클릭하세요,I-click upang magpatuloy
+
+tutorial_other,Other useful controls,Ētahi atu mana whakahaere whaihua,其他实用操作,अन्य有用的操作,기타 유용한 조작,Iba pang kapaki-pakinabang na kontrol

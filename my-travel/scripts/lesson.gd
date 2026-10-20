@@ -45,17 +45,16 @@ func _advance() -> void:
 	else:
 		player.slow_check_enabled = true
 
-
 func _show_step(step: Step) -> void:
 	match step:
 		Step.IGNITION:
-			DialogueBox.show_dialogue("Instructor", "Press Tab to start the engine.", "lesson_intro")
+			DialogueBox.show_dialogue(tr("lesson_speaker"), tr("lesson_start_engine"), "lesson_intro")
 		Step.HEADLIGHTS:
-			DialogueBox.show_dialogue("Instructor", "Good. Now press T to turn on your headlights — you'll need them tonight.", "lesson_intro")
+			DialogueBox.show_dialogue(tr("lesson_speaker"), tr("lesson_headlights"), "lesson_intro")
 		Step.GOAL:
 			DialogueBox.show_dialogue(
-				"Instructor",
-				"Complete one full loop of the track to pass this lesson. Speed up! You only earn points driving between %d and %d km/h." % [
+				tr("lesson_speaker"),
+				tr("lesson_loop") % [
 					int(ScoreManager.MIN_SCORING_SPEED_KMH),
 					int(player.speeding_threshold_kmh)
 				],

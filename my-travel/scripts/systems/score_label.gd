@@ -10,4 +10,4 @@ func _ready():
 
 
 func _on_score_changed(new_score: int):
-	text = "Score: %d / %d" % [new_score, ScoreManager.target_score]
+	text = tr("hud_score") % [new_score, ScoreManager.target_score]

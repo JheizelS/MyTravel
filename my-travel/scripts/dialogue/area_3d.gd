@@ -1,8 +1,5 @@
 extends Area3D
 
-
-@export var speaker_name: String = "Welcome to MyTravel!"
-@export var dialogue_text: String = "In New Zealand, you drive on the left side of the road. Keep to the left side of the road, and stay under the speed limit (or you start to lose points!) and reach a score of 25 at the end of the lap to complete this lesson."
 @export var trigger_once: bool = true
 @export var lesson_intro: Node  # drag your LessonIntro node in here
 
@@ -21,9 +18,18 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 
 	_has_triggered = true
-	_waiting_for_continue = true
-	DialogueBox.show_dialogue(speaker_name, dialogue_text + "\n\n(Click to continue)", "intro")
 
+	var tutorial: Node = get_tree().get_first_node_in_group("controls_tutorial")
+	if tutorial:
+		await tutorial.finished
+
+	_waiting_for_continue = true
+	var body_text: String = tr("lesson_welcome_body") % int(ScoreManager.target_score)
+	DialogueBox.show_dialogue(
+		tr("lesson_welcome_title"),
+		body_text + "\n\n" + tr("lesson_click_continue"),
+		"intro"
+	)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _waiting_for_continue:

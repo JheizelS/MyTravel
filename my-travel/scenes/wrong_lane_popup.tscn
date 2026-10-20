@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://yekakdy4vd01" path="res://scripts/UI/popup.gd" id="1_rcj6w"]
 [ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="1_s33kk"]
-[ext_resource type="Texture2D" uid="uid://c1nv7lb31liwx" path="res://assets/UI/keep-left-sign.png" id="2_65mui"]
 [ext_resource type="Texture2D" uid="uid://ci1p0whcb51qv" path="res://assets/UI/spacebar_edited.png" id="3_65mui"]
+[ext_resource type="Texture2D" uid="uid://ccpik561w8fea" path="res://assets/UI/keep left.png" id="3_rcj6w"]
 
 [node name="WrongLanePopup" type="CanvasLayer" unique_id=306517101]
 script = ExtResource("1_rcj6w")
@@ -25,13 +25,14 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_s33kk")
 theme_override_font_sizes/font_size = 30
-text = "KEEP LEFT"
+text = "popup_keep_left"
 horizontal_alignment = 1
 
-[node name="Sign" type="TextureRect" parent="VBoxContainer" unique_id=222096773]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1672301728]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-texture = ExtResource("2_65mui")
+texture = ExtResource("3_rcj6w")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=975636291]
@@ -42,7 +43,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_s33kk")
 theme_override_font_sizes/font_size = 20
-text = "To continue driving:"
+text = "popup_continue"
 
 [node name="SpaceBarPrompt" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1350915345]
 custom_minimum_size = Vector2(120, 45)

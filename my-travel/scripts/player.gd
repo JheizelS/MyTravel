@@ -1,12 +1,9 @@
 extends VehicleBody3D
 
-# Max steering angle in radians
+# Vehicle settings that are adjustable to allow future adjustments to vehicle handling
 const MAX_STEER = 0.5
-# Force applied to wheels when accelerating
 const ENGINE_POWER = 125
-# Speed cap — engine force tapers to 0 as car approaches this speed
 const MAX_SPEED_KMH = 120.0
-# Camera pan settings
 const MOUSE_SENSITIVITY = 0.0025
 const MAX_PAN_ANGLE = 50.0
 
@@ -23,6 +20,7 @@ const MAX_PAN_ANGLE = 50.0
 @onready var finish_detector: Area3D = $FinishDetector
 @onready var speed_bg: Panel = $CanvasLayer/Speedometer/SpeedBackground
 
+# Exported variables allow driving rules and vehicle settings to be updated in Inspector without having to manually modify the script.
 @export var stuck_speed_threshold: float = 1.0 # m/s , not moving 
 @export var stuck_time_required: float = 3.5 # seconds required before flagging as stuck
 @export var min_angle: float = 0.0
@@ -37,12 +35,14 @@ const MAX_PAN_ANGLE = 50.0
 @export var good_speed_color := Color(0.2, 0.8, 0.3, 0.6)
 @export var bad_speed_color := Color(0.9, 0.15, 0.15, 0.6)
 @export var idle_speed_color := Color(1, 1, 1, 0.0)
-
+@export var assist_speed_cap: float = 48.0   # km/h, stays under the 50 speeding limit
+@export var assist_fade_range: float = 8.0   # km/h below the cap where power starts fading
+@export var assist_steer_scale: float = 0.8   # 1.0 = normal, lower = gentler
 
 var _lesson_complete := false
 var headlights_on = false
 var reverse_mode := false
-var camera_yaw := 0.0  # horizontal pan offset from car's heading
+var camera_yaw := 0.0
 var engine_running = false
 var _off_road_warned := false 
 var _off_road_check_enabled := false
@@ -58,12 +58,15 @@ var _pending_teleport := false
 var _teleport_transform := Transform3D.IDENTITY
 
 
- 
+# Adjusts steering based on speed (and if driving assistance is enabled), so steering behaviour is updated independantly. 
 func _get_speed_scaled_steer() -> float:
 	var speed_kmh = linear_velocity.length() * 3.6
 	# Full steer angle up to 30 km/h, tapers to 20% at 120 km/h
 	var steer_factor = clamp(1.0 - (speed_kmh / 120.0) * 0.8, 0.2, 1.0)
-	return MAX_STEER * steer_factor
+	var steer = MAX_STEER * steer_factor
+	if AssistSettings.assist_enabled:
+		steer *= assist_steer_scale
+	return steer
  
 
 func _start_engine():
@@ -72,6 +75,7 @@ func _start_engine():
 
 
 func _ready():
+	print("Assist enabled: ", AssistSettings.assist_enabled)
 	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Start with main camera active
@@ -93,7 +97,7 @@ func _ready():
 
 func _input(event):
 	
-	if PauseMenu.is_paused:
+	if PauseMenu.is_paused or ControlsTutorial.active:
 		return
 	if event.is_action_pressed("start_engine") and not engine_running:
 		_start_engine()
@@ -101,15 +105,10 @@ func _input(event):
 	if event.is_action_pressed("retry_lesson") and is_stuck:
 		# DEBUG: print("R pressed | is_stuck: ", is_stuck)
 		_respawn()
-	# Laptop
+		# Pan angle
 	if event is InputEventMouseMotion and not reverse_mode: # Only pan when using main camera
 		camera_yaw -= event.relative.x * MOUSE_SENSITIVITY
 		# Clamp so player can't spin camera fully around
-		camera_yaw = clamp(camera_yaw, deg_to_rad(-MAX_PAN_ANGLE), deg_to_rad(MAX_PAN_ANGLE))
-	# Mobile
-	if event is InputEventScreenDrag and not reverse_mode:
-		camera_yaw -= event.relative.x * MOUSE_SENSITIVITY
-		# Clamp
 		camera_yaw = clamp(camera_yaw, deg_to_rad(-MAX_PAN_ANGLE), deg_to_rad(MAX_PAN_ANGLE))
 		
 	if event.is_action_pressed("toggle_headlights"):
@@ -120,10 +119,9 @@ func _input(event):
 		ScoreManager.reset_score()
 		get_tree().reload_current_scene()
  
-
+# Updates vehicle movement and calls separate road functions, (so any new implementation is added here)
 func _physics_process(delta):
 	_check_camera_switch() 
-
 	_check_off_road()
 	_check_wrong_lane()
 	_check_speeding(delta)
@@ -133,15 +131,15 @@ func _physics_process(delta):
 	# Speed-scaled steering return rate (recalculated every frame)
 	var speed_kmh = linear_velocity.length() * 3.6
 	var return_rate = lerp(1.0, 3.5, clamp(speed_kmh / 100.0, 0.0, 1.0))
-	
+		
 	ScoreManager.set_speed(speed_kmh) 
 	
-	# Speedometer -> Needle rotation
+	# Speedometer Needle rotation
 	var ratio = clamp(speed_kmh / max_speed, 0.0, 1.0)
 	needle.rotation_degrees = lerp(min_angle, max_angle, ratio)
 	_update_speed_background(speed_kmh, delta)
 	
-	if PauseMenu.is_paused:
+	if PauseMenu.is_paused or ControlsTutorial.active:
 		steering = move_toward(steering, 0.0, delta * return_rate)
 		engine_force = 0.0
 	else:
@@ -151,7 +149,10 @@ func _physics_process(delta):
 			delta * return_rate
 		)
 		var speed_taper = clamp(1.0 - (speed_kmh / 120.0), 0.0, 1.0)	
-		engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper if engine_running else 0.0
+		var assist_taper := 1.0
+		if AssistSettings.assist_enabled:
+			assist_taper = clamp((assist_speed_cap - speed_kmh) / assist_fade_range, 0.0, 1.0)
+		engine_force = Input.get_axis("steer_back", "steer_forward") * ENGINE_POWER * speed_taper * assist_taper if engine_running else 0.0
 	
 	# Snap pivot position to car each frame
 	camera_pivot.global_position = global_position
@@ -173,7 +174,7 @@ func _physics_process(delta):
 		$back_right.wheel_friction_slip = 1.5
 		$back_left.wheel_friction_slip = 1.5
 
-
+# Switches between front and reverse camera
 func _check_camera_switch():
 	if Input.is_action_just_pressed("reverse_camera"):
 		reverse_mode = !reverse_mode
@@ -188,8 +189,11 @@ func _check_camera_switch():
 		camera_3d.current = true
 		reverse_camera.current = false
 
-
+# Detection system for when car leaves the road
 func _check_off_road():
+	if PauseMenu.is_paused:
+		return
+
 	if not _off_road_check_enabled or _lesson_complete:
 		return
 
@@ -207,10 +211,10 @@ func _check_off_road():
 		_off_road_warned = false
 		ScoreManager.set_off_road(false)
 		OffRoadIndicator.hide_indicator()
-		
-		
+
+# Detection system for wrong lane
 func _check_wrong_lane():
-	if _lesson_complete:
+	if _lesson_complete or PauseMenu.is_paused:
 		return
 		
 	var overlapping_areas = wrong_lane_detector.get_overlapping_areas()
@@ -234,7 +238,7 @@ func _check_wrong_lane():
 func _on_wrong_lane_dismissed() -> void:
 	get_tree().paused = false
 
-
+# Detects lesson completion based on evaluation of player's score using ScoreManager
 func _on_finish_detector_area_entered(area: Area3D) -> void:
 	if area.is_in_group("finish_line") and not _lesson_complete:
 		_lesson_complete = true
@@ -244,8 +248,11 @@ func _on_finish_detector_area_entered(area: Area3D) -> void:
 		else:
 			DialogueBox.show_dialogue("Instructor:", "Score: %d / %d — not quite. Press R to try again." % [ScoreManager.score, ScoreManager.target_score], "lesson_failed")
 
-
+# Detection system for speeding (with warning delay)
 func _check_speeding(delta: float) -> void:
+	if PauseMenu.is_paused:
+		return
+	
 	if _lesson_complete:
 		speeding_timer = 0.0
 		return
@@ -270,7 +277,7 @@ func _on_speeding_dismissed() -> void:
 	speeding_timer = 0.0
 	ScoreManager.set_speeding(false)
 
-
+# Detection system for when user is driving too slowly and displays warning
 func _check_slow(delta: float) -> void:
 	var reversing = Input.get_axis("steer_back", "steer_forward") < 0.0
 	var too_slow: bool = (
@@ -296,12 +303,14 @@ func _check_slow(delta: float) -> void:
 	else:
 		slow_timer = 0.0
 
+
 func _on_slow_dismissed() -> void:
 	get_tree().paused = false
 	# The car may be standing still, so work out "forward" from the wheels
 	linear_velocity = _get_forward_direction() * (slow_resume_speed_kmh / 3.6)
 	slow_warning_active = false
 	slow_timer = 0.0
+
 
 func _get_forward_direction() -> Vector3:
 	var front = (wheels[0].global_position + wheels[1].global_position) * 0.5
@@ -311,7 +320,7 @@ func _get_forward_direction() -> Vector3:
 	return dir.normalized()
 
 
-
+# Detection system for when user is stationary for too long (where threshold is adjustable)
 func _check_stuck(delta: float) -> void:
 	if not engine_running or PauseMenu.is_paused or not slow_check_enabled:
 		_stuck_timer = 0.0
@@ -334,7 +343,7 @@ func _check_stuck(delta: float) -> void:
 		is_stuck = false
 		StuckIndicator.hide_indicator()
 
-
+# Finds respawn markers
 func _respawn() -> void:
 	var barrier := get_tree().get_first_node_in_group("respawn_trigger")
 	# DEBUG: print("respawn barrier found: ", barrier)
@@ -360,8 +369,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		state.angular_velocity = Vector3.ZERO
 		
 
+# Updates speedometre background based on driving speed
 func _update_speed_background(speed_kmh: float, delta: float) -> void:
-	print("engine: ", engine_running, " | intro done: ", slow_check_enabled, " | kmh: ", snappedf(speed_kmh, 0.1))
 	var target: Color
 	if not engine_running or not slow_check_enabled:
 		target = idle_speed_color

@@ -4,14 +4,17 @@ extends GridContainer
 @onready var a_key = $keyboard_a
 @onready var s_key = $keyboard_s
 @onready var d_key = $keyboard_d
-@onready var keyboard_t: TextureRect = $"../SideUIContainer/keyboard_t"
 @onready var keyboard_r: TextureRect = $"../SideUIContainer/keyboard_r"
-
+@onready var keyboard_t: TextureRect = $"../SideUIContainer/keyboard_t"
 
 
 var reverse_camera_on = false
 var headlights_on = false
 
+func _ready() -> void:
+	print("Script on: ", get_path())
+	print("keyboard_t: ", keyboard_t)
+	print("keyboard_r: ", keyboard_r)
 
 
 func _process(_delta):

@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cmixxy141eujr"]
+
+[ext_resource type="Script" uid="uid://bclg04rumjfuo" path="res://scripts/UI/controls_tutorial.gd" id="1_fblp6"]
+[ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="2_feaon"]
+[ext_resource type="Texture2D" uid="uid://cf8bd6dtxl3nn" path="res://assets/keyboard assets/keyboard_w.png" id="4_fgeek"]
+[ext_resource type="Texture2D" uid="uid://tjny0wb81np2" path="res://assets/keyboard assets/keyboard_a.png" id="5_61hi6"]
+[ext_resource type="Texture2D" uid="uid://bptuje1r5wxdm" path="res://assets/keyboard assets/keyboard_s.png" id="6_d870f"]
+[ext_resource type="Texture2D" uid="uid://bhad4bys2jo06" path="res://assets/keyboard assets/keyboard_d.png" id="7_ujuy5"]
+[ext_resource type="Texture2D" uid="uid://c1jmonl40eudp" path="res://assets/keyboard assets/keyboard_t.png" id="8_fgeek"]
+[ext_resource type="Texture2D" uid="uid://ddesxyi47t4qt" path="res://assets/UI/mouse (1).png" id="8_t5du4"]
+[ext_resource type="Texture2D" uid="uid://bs5cyfth1ej0v" path="res://assets/UI/white_headlight.png" id="9_61hi6"]
+[ext_resource type="Texture2D" uid="uid://baw6odskuwayw" path="res://assets/keyboard assets/keyboard_c.png" id="10_d870f"]
+[ext_resource type="Texture2D" uid="uid://3oy6owchp2sp" path="res://assets/UI/white_reverse_camera.png" id="11_ujuy5"]
+
+[node name="ControlsTutorial" type="CanvasLayer" unique_id=1567991815]
+layer = 50
+script = ExtResource("1_fblp6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2046217851]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8784314)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=757490682]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Step1" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=1259549515]
+layout_mode = 2
+
+[node name="ControlsInstruction" type="Label" parent="ColorRect/CenterContainer/Step1" unique_id=1088836275]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_feaon")
+theme_override_font_sizes/font_size = 26
+text = "tutorial_move"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/Step1" unique_id=954870594]
+layout_mode = 2
+
+[node name="WASD" type="GridContainer" parent="ColorRect/CenterContainer/Step1/HBoxContainer" unique_id=918077862]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = -5
+columns = 3
+
+[node name="empty_space" type="Control" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=194672309]
+layout_mode = 2
+
+[node name="keyboard_w" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=1873551584]
+layout_mode = 2
+texture = ExtResource("4_fgeek")
+stretch_mode = 5
+
+[node name="empty_space2" type="Control" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=1826310208]
+layout_mode = 2
+
+[node name="keyboard_a" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=885507912]
+layout_mode = 2
+texture = ExtResource("5_61hi6")
+stretch_mode = 5
+
+[node name="keyboard_s" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=825852725]
+layout_mode = 2
+texture = ExtResource("6_d870f")
+stretch_mode = 5
+
+[node name="keyboard_d" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer/WASD" unique_id=431757220]
+layout_mode = 2
+texture = ExtResource("7_ujuy5")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer" unique_id=475960171]
+layout_mode = 2
+texture = ExtResource("8_t5du4")
+expand_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="ColorRect/CenterContainer/Step1" unique_id=1382468073]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_feaon")
+theme_override_font_sizes/font_size = 15
+text = "tutorial_continue"
+horizontal_alignment = 1
+
+[node name="Step2" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=1800645861]
+visible = false
+layout_mode = 2
+
+[node name="ControlsInstruction" type="Label" parent="ColorRect/CenterContainer/Step2" unique_id=785653261]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_feaon")
+theme_override_font_sizes/font_size = 26
+text = "tutorial_other"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/Step2" unique_id=77869920]
+layout_mode = 2
+alignment = 1
+
+[node name="SideUIContainer" type="GridContainer" parent="ColorRect/CenterContainer/Step2/HBoxContainer" unique_id=653537732]
+layout_mode = 2
+columns = 3
+
+[node name="keyboard_t" type="TextureRect" parent="ColorRect/CenterContainer/Step2/HBoxContainer/SideUIContainer" unique_id=1485696150]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("8_fgeek")
+stretch_mode = 5
+
+[node name="headlights_icon" type="TextureRect" parent="ColorRect/CenterContainer/Step2/HBoxContainer/SideUIContainer" unique_id=559978101]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_61hi6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="spacer" type="Control" parent="ColorRect/CenterContainer/Step2/HBoxContainer/SideUIContainer" unique_id=983069244]
+layout_mode = 2
+
+[node name="keyboard_r" type="TextureRect" parent="ColorRect/CenterContainer/Step2/HBoxContainer/SideUIContainer" unique_id=172967845]
+layout_mode = 2
+texture = ExtResource("10_d870f")
+stretch_mode = 5
+
+[node name="reverse_cam_icon" type="TextureRect" parent="ColorRect/CenterContainer/Step2/HBoxContainer/SideUIContainer" unique_id=1550577643]
+layout_mode = 2
+texture = ExtResource("11_ujuy5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ContinueLabel" type="Label" parent="ColorRect/CenterContainer/Step2" unique_id=1993810747]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_feaon")
+theme_override_font_sizes/font_size = 15
+text = "tutorial_continue"
+horizontal_alignment = 1

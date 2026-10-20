@@ -36,25 +36,24 @@ theme_override_constants/margin_top = -27
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="PauseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1299720472]
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1299720472]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_myx47")
 theme_override_font_sizes/font_size = 63
-text = "RETURN
-"
+text = "ui_back"
 
 [node name="SettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=2038983424]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_myx47")
 theme_override_font_sizes/font_size = 50
-text = "SETTINGS"
+text = "menu_settings"
 
 [node name="MainMenu" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1542289697]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_myx47")
 theme_override_font_sizes/font_size = 60
-text = "MAIN MENU"
+text = "pause_main_menu"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
