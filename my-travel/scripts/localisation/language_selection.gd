@@ -1,7 +1,7 @@
 extends Control
 
 const SETTINGS_PATH = "user://settings.cfg"
-const DISCLAIMER_SCREEN = "res://scenes/disclaimer_screen.tscn"
+const DISCLAIMER_SCREEN = "res://scenes/localisation/disclaimer_screen.tscn"
 
 
 func _on_english_button_pressed() -> void:

@@ -38,6 +38,7 @@ const MAX_PAN_ANGLE = 50.0
 @export var assist_speed_cap: float = 48.0   # km/h, stays under the 50 speeding limit
 @export var assist_fade_range: float = 8.0   # km/h below the cap where power starts fading
 @export var assist_steer_scale: float = 0.8   # 1.0 = normal, lower = gentler
+@export_range(0.0, 1.0) var min_speed_ratio: float = 0.7 # Fraction of the speed limit the player should at least be driving
 
 var _lesson_complete := false
 var headlights_on = false
@@ -58,7 +59,7 @@ var _pending_teleport := false
 var _teleport_transform := Transform3D.IDENTITY
 
 
-# Adjusts steering based on speed (and if driving assistance is enabled), so steering behaviour is updated independantly. 
+# Adjusts steering based on speed so steering behaviour is updated independantly 
 func _get_speed_scaled_steer() -> float:
 	var speed_kmh = linear_velocity.length() * 3.6
 	# Full steer angle up to 30 km/h, tapers to 20% at 120 km/h
@@ -371,11 +372,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 # Updates speedometre background based on driving speed
 func _update_speed_background(speed_kmh: float, delta: float) -> void:
+	var min_good_speed: float = max(
+		ScoreManager.MIN_MOVING_SPEED_KMH,
+		speeding_threshold_kmh * min_speed_ratio
+	)
+
 	var target: Color
 	if not engine_running or not slow_check_enabled:
 		target = idle_speed_color
-	elif speed_kmh >= ScoreManager.MIN_MOVING_SPEED_KMH and speed_kmh <= speeding_threshold_kmh:
-			target = good_speed_color
+	elif speed_kmh >= min_good_speed and speed_kmh <= speeding_threshold_kmh:
+		target = good_speed_color
 	else:
 		target = bad_speed_color
 	speed_bg.modulate = speed_bg.modulate.lerp(target, delta * 8.0)

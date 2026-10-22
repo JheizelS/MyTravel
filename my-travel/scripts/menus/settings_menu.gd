@@ -55,7 +55,7 @@ func _on_back_pressed() -> void:
 	if has_meta("from_pause"):
 		PauseMenu.close_settings()
 	else:
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 func _update_button_states() -> void:
 	var is_high := GraphicsSettings.current_quality == GraphicsSettings.Quality.HIGH

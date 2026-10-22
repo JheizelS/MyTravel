@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dodusewtknxd4"
-path="res://.godot/imported/NotoSansDevanagari-VariableFont_wdth,wght.ttf-5f6b48c8ca80765ca9116d94459b2b4a.fontdata"
+uid="uid://cgcyvy0tbso8b"
+path="res://.godot/imported/NotoSansKR-VariableFont_wght.ttf-142cfa62b0d53aa7f4e6cd80590b334f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/NotoSansDevanagari-VariableFont_wdth,wght.ttf"
-dest_files=["res://.godot/imported/NotoSansDevanagari-VariableFont_wdth,wght.ttf-5f6b48c8ca80765ca9116d94459b2b4a.fontdata"]
+source_file="res://assets/fonts/original fonts/NotoSansKR-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/NotoSansKR-VariableFont_wght.ttf-142cfa62b0d53aa7f4e6cd80590b334f.fontdata"]
 
 [params]
 

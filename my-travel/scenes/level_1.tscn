@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c12rhnxfxxn4u" path="res://scenes/test_road_as_branch.tscn" id="2_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://bl7owpjou6btv" path="res://scenes/terrain.tscn" id="3_4nkto"]
-[ext_resource type="PackedScene" uid="uid://cu0eq5ophqhnv" path="res://scenes/weather_cycle.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://cu0eq5ophqhnv" path="res://scenes/sky/weather_cycle.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://btft6ul4h33n1" path="res://scenes/player.tscn" id="4_fcfvj"]
 [ext_resource type="Script" uid="uid://cvcnc7j0nejwf" path="res://scripts/systems/barrier.gd" id="5_4nkto"]
 [ext_resource type="Script" uid="uid://cn1fk4rjnngfs" path="res://scripts/dialogue/area_3d.gd" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://wbma48au5pl4" path="res://assets/models/road_source/signs/speed_limit.tscn" id="7_pa8r4"]
-[ext_resource type="Script" uid="uid://dmekqrp4eq0n6" path="res://scripts/lesson.gd" id="8_15mv3"]
-[ext_resource type="PackedScene" uid="uid://cmixxy141eujr" path="res://scenes/controls_tutorial.tscn" id="9_e3sih"]
+[ext_resource type="Script" uid="uid://dmekqrp4eq0n6" path="res://scripts/systems/lesson.gd" id="8_15mv3"]
+[ext_resource type="PackedScene" uid="uid://cmixxy141eujr" path="res://scenes/UI/controls_tutorial.tscn" id="9_e3sih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0br7"]
 albedo_color = Color(0.053080797, 0.35290337, 0.15272775, 1)

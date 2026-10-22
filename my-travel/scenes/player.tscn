@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c1jmonl40eudp" path="res://assets/keyboard assets/keyboard_t.png" id="13_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://baw6odskuwayw" path="res://assets/keyboard assets/keyboard_c.png" id="14_a38lo"]
 [ext_resource type="Texture2D" uid="uid://bs5cyfth1ej0v" path="res://assets/UI/white_headlight.png" id="14_i4ail"]
-[ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/NationalPark-Bold.ttf" id="14_oprun"]
+[ext_resource type="FontFile" uid="uid://dg8hj5xaeohc2" path="res://assets/fonts/original fonts/NationalPark-Bold.ttf" id="14_oprun"]
 [ext_resource type="Texture2D" uid="uid://3oy6owchp2sp" path="res://assets/UI/white_reverse_camera.png" id="16_a38lo"]
 [ext_resource type="Texture2D" uid="uid://faqrow2mynrf" path="res://assets/UI/speedometer.png" id="16_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://dkbtctb3ulhka" path="res://assets/UI/needle.png" id="17_qfm1y"]

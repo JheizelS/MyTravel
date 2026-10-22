@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vihsdk0d1dpx"]
 
-[ext_resource type="PackedScene" uid="uid://bv06gg050nq7w" path="res://assets/models/road_source/new/road-end.glb" id="1_y23vh"]
+[ext_resource type="PackedScene" uid="uid://bv06gg050nq7w" path="res://assets/models/road_source/road-end.glb" id="1_y23vh"]
 [ext_resource type="Texture2D" uid="uid://b8weplnoxnosp" path="res://assets/models/road/road_textures.png" id="2_dakhg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r25fv"]

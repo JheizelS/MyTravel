@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var panel: Panel = $Panel
 
 var is_paused: bool = false
-const SETTINGS_SCENE := preload("res://scenes/settings_menu.tscn")
+const SETTINGS_SCENE := preload("res://scenes/menus/settings_menu.tscn")
 var _settings_instance: Node = null
 
 func _ready() -> void:
@@ -63,4 +63,4 @@ func _on_main_menu_pressed() -> void:
 	is_paused = false
 	get_tree().paused = false
 	DialogueBox.hide_dialogue()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")

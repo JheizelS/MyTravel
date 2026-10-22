@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cehexndba7qyx"]
+
+[ext_resource type="Script" uid="uid://byypyx6m0cicf" path="res://scripts/menus/credits_menu.gd" id="1_p38dx"]
+[ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="2_oqgs5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs82v"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="CreditsMenu" type="Control" unique_id=459278384]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p38dx")
+
+[node name="Panel" type="Panel" parent="." unique_id=1401036550]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cs82v")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1561228403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 139.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer" unique_id=2032416290]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/mono_font_size = 26
+bbcode_enabled = true
+text = "[center][b]MyTravel[/b]
+@credits_created_by@ Jheizel Susbilla
+
+[b]@credits_assets@[/b]
+Road signs by JoTrain the Aussie, via SketchFab
+Suburhan Houses (CC0), via Kenney
+Input prompts (CC0), via Kenney
+Road Meshs (CC0), via Kenney
+Nissan GTR By David Sirera, via Poly Pizza
+Stylised sky shaders by NathanLovato
+Fonts from Google Fonts
+Play icon by NajmunNahar
+Speedometer by Khanoyan Abraham
+Engine startup by Dragon-Studio, via Pixabay
+Reverse Camera by Andrean Prabowo, via Flaticon
+Popup speed limit sign by OpenClipart-Vectors
+Spacebar by MngHotel, via KindPNG
+Reset button by inspire-studio, via Pixabay
+Keep left, via NZTA site
+Mouse icon by Magnific, via Flaticon
+
+[b]@credits_made_with@[/b]
+Godot Engine, Blender, and Photopea
+
+[b]@credits_thanks@[/b]
+@credits_feedback@ [/center]
+
+"
+fit_content = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1827461347]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.5
+offset_right = 101.685
+offset_bottom = 157.57
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1333597780]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1095504129]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_oqgs5")
+theme_override_font_sizes/font_size = 50
+text = "credits_title"
+
+[node name="BackButton" type="Button" parent="." unique_id=1698140681]
+layout_mode = 1
+offset_right = 119.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("2_oqgs5")
+theme_override_font_sizes/font_size = 25
+text = "ui_back"

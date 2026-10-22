@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cf8bd6dtxl3nn" path="res://assets/keyboard assets/keyboard_w.png" id="4_fgeek"]
 [ext_resource type="Texture2D" uid="uid://tjny0wb81np2" path="res://assets/keyboard assets/keyboard_a.png" id="5_61hi6"]
 [ext_resource type="Texture2D" uid="uid://bptuje1r5wxdm" path="res://assets/keyboard assets/keyboard_s.png" id="6_d870f"]
+[ext_resource type="Texture2D" uid="uid://ddesxyi47t4qt" path="res://assets/UI/mouse.png" id="7_2chry"]
 [ext_resource type="Texture2D" uid="uid://bhad4bys2jo06" path="res://assets/keyboard assets/keyboard_d.png" id="7_ujuy5"]
 [ext_resource type="Texture2D" uid="uid://c1jmonl40eudp" path="res://assets/keyboard assets/keyboard_t.png" id="8_fgeek"]
-[ext_resource type="Texture2D" uid="uid://ddesxyi47t4qt" path="res://assets/UI/mouse (1).png" id="8_t5du4"]
 [ext_resource type="Texture2D" uid="uid://bs5cyfth1ej0v" path="res://assets/UI/white_headlight.png" id="9_61hi6"]
 [ext_resource type="Texture2D" uid="uid://baw6odskuwayw" path="res://assets/keyboard assets/keyboard_c.png" id="10_d870f"]
 [ext_resource type="Texture2D" uid="uid://3oy6owchp2sp" path="res://assets/UI/white_reverse_camera.png" id="11_ujuy5"]
@@ -79,7 +79,7 @@ stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/CenterContainer/Step1/HBoxContainer" unique_id=475960171]
 layout_mode = 2
-texture = ExtResource("8_t5du4")
+texture = ExtResource("7_2chry")
 expand_mode = 2
 
 [node name="ContinueLabel" type="Label" parent="ColorRect/CenterContainer/Step1" unique_id=1382468073]

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dg8hj5xaeohc2"
-path="res://.godot/imported/NationalPark-Bold.ttf-b89c4100ef6dee85a9550ac4e6c75134.fontdata"
+uid="uid://dodusewtknxd4"
+path="res://.godot/imported/NotoSansDevanagari-VariableFont_wdth,wght.ttf-b71ecf66ad4477a6c9e2362f30be81e5.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/NationalPark-Bold.ttf"
-dest_files=["res://.godot/imported/NationalPark-Bold.ttf-b89c4100ef6dee85a9550ac4e6c75134.fontdata"]
+source_file="res://assets/fonts/original fonts/NotoSansDevanagari-VariableFont_wdth,wght.ttf"
+dest_files=["res://.godot/imported/NotoSansDevanagari-VariableFont_wdth,wght.ttf-b71ecf66ad4477a6c9e2362f30be81e5.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 modulate_color_glyphs=false
-hinting=1
+hinting=3
 subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0

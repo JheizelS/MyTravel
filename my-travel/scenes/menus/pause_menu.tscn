@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3aw4gd4hgklw"]
 
-[ext_resource type="Script" uid="uid://pbo18rp2qexw" path="res://scripts/UI/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://pbo18rp2qexw" path="res://scripts/menus/pause_menu.gd" id="1_n87rw"]
 [ext_resource type="FontVariation" uid="uid://7bvxe6d2q5rc" path="res://assets/fonts/main_font_with_fallback.tres" id="2_myx47"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87rw"]
